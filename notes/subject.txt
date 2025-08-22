@@ -1,0 +1,214 @@
+cub3D – Mój pierwszy RayCaster z użyciem miniLibX
+Podsumowanie
+
+Ten projekt jest inspirowany światowej sławy grą Wolfenstein 3D, która uważana jest za pierwszy FPS w historii.
+Projekt umożliwi Ci zgłębienie działania ray-castingu.
+Twoim celem będzie stworzenie dynamicznego widoku wnętrza labiryntu, w którym będziesz musiał odnaleźć drogę.
+
+Wersja: 11.0
+
+Rozdział I – Wstęp (Foreword)
+
+Gra Wolfenstein 3D została stworzona przez firmę Id Software, kierowaną przez Johna Carmacka i Johna Romero, a wydana w 1992 roku przez Apogee Software.
+Wolfenstein 3D to pierwszy prawdziwy First Person Shooter w historii gier komputerowych.
+
+Gra jest przodkiem takich tytułów jak:
+
+Doom (Id Software, 1993)
+
+Doom II (Id Software, 1994)
+
+Duke Nukem 3D (3D Realms, 1996)
+
+Quake (Id Software, 1996)
+
+Teraz Twoja kolej, by przeżyć historię na nowo.
+
+Uwaga: Gra Wolfenstein 3D rozgrywa się w nazistowskich Niemczech, co może być potencjalnie niepokojące.
+Wzmianki o grze oraz jej historia zostały przywołane wyłącznie w celach technicznych i kulturowych, ponieważ gra jest uważana za arcydzieło.
+
+Rozdział II – Cele (Goals)
+
+Cele projektu są podobne do innych projektów z pierwszego roku:
+
+rygor w pracy,
+
+programowanie w języku C,
+
+algorytmy,
+
+umiejętność wyszukiwania informacji.
+
+Jako projekt graficzny cub3D pozwoli Ci rozwinąć umiejętności w zakresie:
+
+obsługi okien,
+
+kolorów,
+
+zdarzeń,
+
+wypełniania kształtów itp.
+
+To świetna okazja, aby poznać praktyczne zastosowania matematyki bez potrzeby głębokiego rozumienia jej teorii.
+Z pomocą dostępnych materiałów w internecie użyjesz matematyki jako narzędzia do tworzenia eleganckich i wydajnych algorytmów.
+
+Możesz przetestować oryginalną grę przed rozpoczęciem projektu:
+http://users.atw.hu/wolf3d/
+
+Rozdział III – Ogólne instrukcje (Common Instructions)
+
+Projekt musi być napisany w języku C.
+
+Projekt musi być zgodny z Normą 42.
+Jeśli masz pliki/funkcje bonusowe – one również podlegają sprawdzeniu normy. Błąd normy = ocena 0.
+
+Funkcje nie mogą się nieoczekiwanie kończyć błędami (segfault, bus error, double free, itp.).
+W przypadku takich błędów projekt zostanie uznany za niefunkcjonalny (ocena 0).
+
+Wszystka pamięć przydzielona na stercie musi być prawidłowo zwalniana. Wycieki pamięci są niedopuszczalne.
+
+Jeśli temat wymaga, musisz dostarczyć Makefile, który:
+
+kompiluje źródła do wymaganych plików wynikowych,
+
+używa flag: -Wall -Wextra -Werror,
+
+korzysta z kompilatora cc,
+
+nie wykonuje niepotrzebnego ponownego linkowania.
+
+Makefile musi zawierać co najmniej reguły:
+$(NAME), all, clean, fclean, re.
+
+Aby dostarczyć bonusy, Makefile musi mieć regułę bonus, która dodaje wszystkie dodatkowe pliki nagłówkowe, biblioteki lub funkcje niedozwolone w części obowiązkowej.
+Pliki bonusowe muszą być w formacie _bonus.c / _bonus.h.
+
+Możesz użyć swojej libft, ale musisz skopiować jej źródła i Makefile do katalogu libft.
+Twój Makefile musi najpierw skompilować bibliotekę, a potem projekt.
+
+Zaleca się tworzenie programów testowych dla projektu (nie podlegają one ocenie, ale pomogą Ci w testowaniu oraz obronie).
+
+Pracę wysyłasz do przypisanego repozytorium Git.
+Tylko kod w repozytorium będzie oceniany.
+
+Rozdział IV – Wskazówki dotyczące AI (AI Instructions)
+
+AI może pomóc w wielu zadaniach: kod, dokumentacja, pomysły, wyjaśnienia techniczne.
+
+Używaj AI z rozwagą i krytycznym podejściem.
+
+AI nie zna Twojego pełnego kontekstu – weryfikuj wygenerowane treści.
+
+Dobre praktyki:
+
+Użyj AI do generowania pomysłów na testy, a następnie przeanalizuj je z kolegą.
+
+Skorzystaj z AI do zaprojektowania parsera, a potem przejdź przez logikę z kolegą, naprawiając ewentualne błędy.
+
+Złe praktyki:
+
+Skopiowanie funkcji wygenerowanej przez AI bez zrozumienia jej działania – grozi porażką na obronie.
+
+Rozdział V – Część obowiązkowa (Mandatory Part)
+
+Nazwa programu: cub3D
+
+Pliki do oddania: wszystkie źródła
+
+Makefile: reguły all, clean, fclean, re, bonus
+
+Argumenty: plik mapy w formacie *.cub
+
+Dozwolone funkcje zewnętrzne:
+
+open, close, read, write, printf, malloc, free, perror, strerror, exit, gettimeofday
+
+wszystkie funkcje z biblioteki matematycznej (-lm)
+
+wszystkie funkcje z biblioteki MiniLibX
+
+Dozwolona libft: TAK
+
+Opis zadania:
+Musisz stworzyć realistyczną graficzną reprezentację 3D wnętrza labiryntu z perspektywy pierwszej osoby, korzystając z zasad ray-castingu.
+
+Wymagania:
+
+Użyj MiniLibX (systemowej lub ze źródeł).
+
+Obsługa okna musi być płynna – przełączanie między oknami, minimalizacja, itp.
+
+Wyświetlanie różnych tekstur ścian zależnie od kierunku (N, S, E, W).
+
+Możliwość ustawienia różnych kolorów podłogi i sufitu.
+
+Program musi obsługiwać:
+
+strzałki ← → – obrót kamery w lewo/prawo,
+
+klawisze W A S D – ruch w labiryncie,
+
+klawisz ESC – zamknięcie programu,
+
+kliknięcie czerwonego krzyżyka – zamknięcie programu.
+
+Program jako pierwszy argument przyjmuje plik sceny z rozszerzeniem .cub.
+
+Zasady mapy:
+
+Dozwolone znaki:
+0 – puste pole,
+1 – ściana,
+N/S/E/W – pozycja i orientacja gracza.
+
+Mapa musi być zamknięta ścianami – w przeciwnym razie błąd.
+
+Sekcje pliku mogą być oddzielone pustymi liniami.
+
+Kolejność elementów (poza mapą) może być dowolna.
+
+Spacje w mapie są dozwolone – musisz je obsłużyć.
+
+Mapa musi być parsowana dokładnie tak, jak wygląda w pliku.
+
+Format pliku .cub:
+
+Każdy element zaczyna się od identyfikatora, a następnie odpowiednich danych:
+
+Tekstury ścian:
+
+NO ./path_to_north_texture
+
+SO ./path_to_south_texture
+
+WE ./path_to_west_texture
+
+EA ./path_to_east_texture
+
+Kolory:
+
+F 220,100,0 – podłoga (RGB 0–255)
+
+C 225,30,0 – sufit (RGB 0–255)
+
+Przykład minimalnego pliku:
+
+NO ./path_to_north_texture
+SO ./path_to_south_texture
+WE ./path_to_west_texture
+EA ./path_to_east_texture
+F 220,100,0
+C 225,30,0
+111111
+100001
+101001
+1100N1
+111111
+
+
+Obsługa błędów:
+W przypadku jakiejkolwiek błędnej konfiguracji pliku, program musi zakończyć się poprawnie i zwrócić:
+
+Error\n
+<opis błędu>
+
