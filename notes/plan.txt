@@ -1,0 +1,4 @@
+1. Poczytac oprojekcie dowiedziec sie co ma robic jakie sa edge case .
+2. Zapalnowac prace.
+3. Ustalic deadline i kiedy sie spotykamy.
+4. Stwrzyc wlasne branche i dodgadac zasady wsplpracy i cel .
