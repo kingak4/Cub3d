@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 #define ROT_SPEED 0.05 // A small value for a smooth rotation speed
+#define MOVE_SPEED 0.05 // A small value for a smooth movement speed
 
 // A simple pixel put function to draw on the image buffer
 void put_pixel_to_img(t_data *data, int x, int y, int color)
@@ -174,10 +175,9 @@ void raycast(t_data *data)
     }
 }
 
-// Handles key press events, setting the rotation state
+// Handles key press events, setting the rotation and movement state
 int key_press(int keycode, t_data *data)
 {
-
     // Escape key to exit the program
     if (keycode == 53)
         exit(0);
@@ -189,11 +189,19 @@ int key_press(int keycode, t_data *data)
     // Right arrow key
     if (keycode == 65363)
         data->is_rotating_right = 1;
+
+    // Up arrow key
+    if (keycode == 65362)
+        data->is_moving_forward = 1;
+    
+    // Down arrow key
+    if (keycode == 65364)
+        data->is_moving_backward = 1;
     
     return (0);
 }
 
-// Handles key release events, resetting the rotation state
+// Handles key release events, resetting the rotation and movement state
 int key_release(int keycode, t_data *data)
 {
     // Left arrow key
@@ -203,6 +211,14 @@ int key_release(int keycode, t_data *data)
     // Right arrow key
     if (keycode == 65363)
         data->is_rotating_right = 0;
+
+    // Up arrow key
+    if (keycode == 65362)
+        data->is_moving_forward = 0;
+
+    // Down arrow key
+    if (keycode == 65364)
+        data->is_moving_backward = 0;
     
     return (0);
 }
@@ -227,7 +243,7 @@ int render(t_data *data)
         double oldPlaneX = data->planeX;
         data->planeX = data->planeX * cos(-ROT_SPEED) - data->planeY * sin(-ROT_SPEED);
         data->planeY = oldPlaneX * sin(-ROT_SPEED) + data->planeY * cos(-ROT_SPEED);
-		usleep(10000);
+		usleep(15000);
     }
     if (data->is_rotating_right)
     {
@@ -237,7 +253,26 @@ int render(t_data *data)
         double oldPlaneX = data->planeX;
         data->planeX = data->planeX * cos(ROT_SPEED) - data->planeY * sin(ROT_SPEED);
         data->planeY = oldPlaneX * sin(ROT_SPEED) + data->planeY * cos(ROT_SPEED);
-		usleep(10000);
+		usleep(15000);
+    }
+
+    // Continuous walking logic with basic collision detection
+    if (data->is_moving_forward)
+    {
+        if (data->worldMap[(int)(data->posY + data->dirY * MOVE_SPEED)][(int)(data->posX)] == 0)
+            data->posY += data->dirY * MOVE_SPEED;
+        if (data->worldMap[(int)(data->posY)][(int)(data->posX + data->dirX * MOVE_SPEED)] == 0)
+            data->posX += data->dirX * MOVE_SPEED;
+		usleep(15000);
+    }
+
+    if (data->is_moving_backward)
+    {
+        if (data->worldMap[(int)(data->posY - data->dirY * MOVE_SPEED)][(int)(data->posX)] == 0)
+            data->posY -= data->dirY * MOVE_SPEED;
+        if (data->worldMap[(int)(data->posY)][(int)(data->posX - data->dirX * MOVE_SPEED)] == 0)
+            data->posX -= data->dirX * MOVE_SPEED;
+		usleep(15000);
     }
 
     // Clear the previous frame
@@ -278,6 +313,8 @@ int main(void)
     // Initialize key state
     data.is_rotating_left = 0;
     data.is_rotating_right = 0;
+    data.is_moving_forward = 0;
+    data.is_moving_backward = 0;
 
     // Initialize MLX and window
     data.mlx_ptr = mlx_init();

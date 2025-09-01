@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 17:01:22 by korzecho         ###   ########.fr       */
+/*   Updated: 2025/09/01 17:11:41 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_data {
 
 	int is_rotating_left;
     int is_rotating_right;
+    int is_moving_forward;
+	int is_moving_backward;
 
     // Player and camera variables
     double  posX;
