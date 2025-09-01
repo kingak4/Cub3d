@@ -1,4 +1,4 @@
-#include "minilibx-linux/mlx.h"
+#include "mlx/mlx.h"
 
 int	main(void)
 {

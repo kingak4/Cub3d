@@ -1,0 +1,159 @@
+cub3D – Mój pierwszy RayCaster z użyciem miniLibX
+
+Twoim celem będzie stworzenie dynamicznego widoku wnętrza labiryntu, w którym będziesz musiał odnaleźć drogę.
+
+
+Rozdział III – Ogólne instrukcje (Common Instructions)
+
+Projekt musi być napisany w języku C.
+
+Projekt musi być zgodny z Normą 42.
+Jeśli masz pliki/funkcje bonusowe – one również podlegają sprawdzeniu normy. Błąd normy = ocena 0.
+
+Funkcje nie mogą się nieoczekiwanie kończyć błędami (segfault, bus error, double free, itp.).
+W przypadku takich błędów projekt zostanie uznany za niefunkcjonalny (ocena 0).
+
+Wszystka pamięć przydzielona na stercie musi być prawidłowo zwalniana. Wycieki pamięci są niedopuszczalne.
+
+Jeśli temat wymaga, musisz dostarczyć Makefile, który:
+
+kompiluje źródła do wymaganych plików wynikowych,
+
+używa flag: -Wall -Wextra -Werror,
+
+korzysta z kompilatora cc,
+
+nie wykonuje niepotrzebnego ponownego linkowania.
+
+Makefile musi zawierać co najmniej reguły:
+$(NAME), all, clean, fclean, re.
+
+Możesz użyć swojej libft, ale musisz skopiować jej źródła i Makefile do katalogu libft.
+Twój Makefile musi najpierw skompilować bibliotekę, a potem projekt.
+
+Zaleca się tworzenie programów testowych dla projektu (nie podlegają one ocenie, ale pomogą Ci w testowaniu oraz obronie).
+
+Pracę wysyłasz do przypisanego repozytorium Git.
+Tylko kod w repozytorium będzie oceniany.
+
+Rozdział IV – Wskazówki dotyczące AI (AI Instructions)
+
+AI może pomóc w wielu zadaniach: kod, dokumentacja, pomysły, wyjaśnienia techniczne.
+
+Używaj AI z rozwagą i krytycznym podejściem.
+
+AI nie zna Twojego pełnego kontekstu – weryfikuj wygenerowane treści.
+
+Dobre praktyki:
+
+Użyj AI do generowania pomysłów na testy, a następnie przeanalizuj je z kolegą.
+
+Skorzystaj z AI do zaprojektowania parsera, a potem przejdź przez logikę z kolegą, naprawiając ewentualne błędy.
+
+Złe praktyki:
+
+Skopiowanie funkcji wygenerowanej przez AI bez zrozumienia jej działania – grozi porażką na obronie.
+
+Rozdział V – Część obowiązkowa (Mandatory Part)
+
+Nazwa programu: cub3D
+
+Pliki do oddania: wszystkie źródła
+
+Makefile: reguły all, clean, fclean, re, bonus
+
+Argumenty: plik mapy w formacie *.cub
+
+Dozwolone funkcje zewnętrzne:
+
+open, close, read, write, printf, malloc, free, perror, strerror, exit, gettimeofday
+
+wszystkie funkcje z biblioteki matematycznej (-lm)
+
+wszystkie funkcje z biblioteki MiniLibX
+
+Dozwolona libft: TAK
+
+Opis zadania:
+Musisz stworzyć realistyczną graficzną reprezentację 3D wnętrza labiryntu z perspektywy pierwszej osoby, korzystając z zasad ray-castingu.
+
+Wymagania:
+
+Użyj MiniLibX (systemowej lub ze źródeł).
+
+Obsługa okna musi być płynna – przełączanie między oknami, minimalizacja, itp.
+
+Wyświetlanie różnych tekstur ścian zależnie od kierunku (N, S, E, W).
+
+Możliwość ustawienia różnych kolorów podłogi i sufitu.
+
+Program musi obsługiwać:
+
+strzałki ← → – obrót kamery w lewo/prawo,
+
+klawisze W A S D – ruch w labiryncie,
+
+klawisz ESC – zamknięcie programu,
+
+kliknięcie czerwonego krzyżyka – zamknięcie programu.
+
+Program jako pierwszy argument przyjmuje plik sceny z rozszerzeniem .cub.
+
+Zasady mapy:
+
+Dozwolone znaki:
+0 – puste pole,
+1 – ściana,
+N/S/E/W – pozycja i orientacja gracza.
+
+Mapa musi być zamknięta ścianami – w przeciwnym razie błąd.
+
+Sekcje pliku mogą być oddzielone pustymi liniami.
+
+Kolejność elementów (poza mapą) może być dowolna.
+
+Spacje w mapie są dozwolone – musisz je obsłużyć.
+
+Mapa musi być parsowana dokładnie tak, jak wygląda w pliku.
+
+Format pliku .cub:
+
+Każdy element zaczyna się od identyfikatora, a następnie odpowiednich danych:
+
+Tekstury ścian:
+
+NO ./path_to_north_texture
+
+SO ./path_to_south_texture
+
+WE ./path_to_west_texture
+
+EA ./path_to_east_texture
+
+Kolory:
+
+F 220,100,0 – podłoga (RGB 0–255)
+
+C 225,30,0 – sufit (RGB 0–255)
+
+Przykład minimalnego pliku:
+
+NO ./path_to_north_texture
+SO ./path_to_south_texture
+WE ./path_to_west_texture
+EA ./path_to_east_texture
+F 220,100,0
+C 225,30,0
+111111
+100001
+101001
+1100N1
+111111
+
+
+Obsługa błędów:
+W przypadku jakiejkolwiek błędnej konfiguracji pliku, program musi zakończyć się poprawnie i zwrócić:
+
+Error\n
+<opis błędu>
+
