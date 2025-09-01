@@ -1,4 +1,4 @@
-1. Poczytac oprojekcie dowiedziec sie co ma robic jakie sa edge case .
-2. Zapalnowac prace.
-3. Ustalic deadline i kiedy sie spotykamy.
-4. Stwrzyc wlasne branche i dodgadac zasady wsplpracy i cel .
+1. parsing scian oraz podlogi i sufitu. / NAPRAW CALY PARSING
+2. Sprawdz czy jest na mapie player.
+3. sparwdz czy mamapa sie parwdlowo zapisala. 
+4. sparwdz scany mapy .

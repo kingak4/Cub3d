@@ -1,0 +1,58 @@
+Plik konfiguracyjny
+
+Sprawdź, czy możesz skonfigurować wszystkie następujące elementy w pliku konfiguracyjnym.
+Formatowanie musi być zgodne z opisem w temacie:
+Rozdzielczość obrazu / rozmiar okna – R
+Ścieżka do tekstury północnej – NO
+Ścieżka do tekstury wschodniej – EA
+Ścieżka do tekstury południowej – SO
+Ścieżka do tekstury zachodniej – WE
+Ścieżka do tekstury sprite’a – S
+Kolor podłogi – F
+Kolor sufitu – C
+
+Mapa (szczegóły w opisie projektu)
+
+Program powinien również zgłaszać błąd i kończyć działanie w przypadku:
+Niepoprawnego pliku konfiguracyjnego (np. nieznany klucz, podwójny klucz, niepoprawna ścieżka)
+Nazwy pliku, która nie kończy się rozszerzeniem .cub
+Jeśli nie działa to poprawnie – obrona projektu jest niezaliczona, a ostateczna ocena wynosi 0.
+
+Elementy techniczne wyświetlania
+
+Program zostanie oceniony pod kątem technicznego działania wyświetlania. Wykonaj poniższe testy:
+Okno powinno otworzyć się automatycznie przy uruchomieniu programu, jeśli argument --save nie jest podany.
+Okno musi pozostawać otwarte przez cały czas działania programu.
+Rozdzielczoć okna powinna odpowiadać tej ustawionej w pliku konfiguracyjnym.
+W oknie powinna być wyświetlana grafika przedstawiająca wnętrze labiryntu.
+Gdy zostanie użyty argument --save, program nie otwiera okna, lecz generuje plik w formacie bmp, o rozdzielczości ustawionej w pliku konfiguracyjnym (R).
+Ukryj część lub całe okno (np. innym oknem lub krawędziami ekranu), zminimalizuj je, a potem zmaksymalizuj. W każdym przypadku zawartość okna musi pozostać spójna.
+Jeśli ustawisz rozdzielczość w pliku konfiguracyjnym większą niż faktyczna rozdzielczość ekranu, program powinien automatycznie dostosować okno do rozdzielczości ekranu.
+Podstawowe akcje użytkownika
+
+Testowane będą reakcje programu na działania użytkownika:
+Kliknięcie czerwonego krzyżyka w lewym górnym rogu okna powinno zamknąć okno i zakończyć program.
+Naciśnięcie klawisza ESC (lub alternatywnie np. Q) powinno również zamknąć okno i zakończyć działanie programu.
+Naciśnięcie strzałek (lub klawiszy WASD / ZQSD) powinno wywołać widoczną reakcję, np. ruch gracza lub zmianę widoku.
+Ruchy gracza
+Program będzie oceniany pod kątem implementacji ruchu i orientacji gracza:
+Orientacja gracza po rozpoczęciu gry musi odpowiadać kierunkowi ustawionemu w pliku konfiguracyjnym (N, S, E, W).
+Naciśnięcie strzałki w lewo (lub A/Q), a potem w prawo (lub D) powinno obracać widok gracza odpowiednio w lewo i w prawo.
+Naciśnięcie strzałki do przodu (W/Z) i w tył (S) powinno przesuwać gracza wzdłuż prostej.
+Naciśnięcie A/Q i D powinno przesuwać widok gracza w lewo i w prawo po prostej.
+Podczas tych ruchów wyświetlanie powinno być płynne, czyli gra powinna być grywalna i nie spowalniać.
+Ściany i sprite’y
+
+Ocena implementacji tekstur i sprite’ów:
+
+Tekstura ściany powinna zmieniać się w zależności od kierunku (N, S, E, W). Perspektywa i tekstury muszą być widoczne i poprawne.
+Jeśli zmienisz ścieżkę tekstury ściany lub sprite’a w pliku konfiguracyjnym, zmiana powinna być widoczna po ponownym uruchomieniu programu.
+Nieistniejąca ścieżka powinna zgłosić błąd.
+Sprite musi być wyświetlany poprawnie i może występować wielokrotnie w tym samym labiryncie.
+Kolory podłogi i sufitu powinny odpowiadać wartościom w pliku konfiguracyjnym.
+Obsługa błędów
+Program będzie oceniany pod kątem niezawodności i obsługi błędów:
+Program nie powinien generować błędów przy losowych lub niepotrzebnych argumentach.
+Brak wycieków pamięci – monitorować np. przez top lub leaks. Pamięć nie powinna rosnąć w czasie działania.
+Dziwne naciśnięcia klawiszy (np. przypadkowe wciśnięcie wielu naraz) nie powinny powodować awarii programu.
+Modyfikacja mapy powinna być obsługiwana poprawnie – jeśli mapa jest źle skonfigurowana, program powinien zgłosić błąd.
