@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 17:32:52 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:24:41 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void parse_line(char *line, t_pars *data)
 {
 	char *value;
-
+	
+	value = space(line);
 	if (check_prefix(line, "NO "))
 	{
 		value = line + 3;
@@ -39,11 +40,46 @@ void parse_line(char *line, t_pars *data)
 	else if (check_prefix(line, "F "))
 	{
 		value = line + 2;
-		data->floor = parse_color(value);
+		data->floor = pars_color(value);
 	}
 	else if (check_prefix(line, "C "))
 	{
 		value = line + 2;
-		data->celling = parse_color(value);
+		data->celling = pars_color(value);
 	}
+}
+
+void	free_tab(char **splited)
+{
+	int	i;
+
+	i = 0;
+	while (splited[i] != NULL)
+	{
+		free(splited[i]);
+		i++;
+	}
+	free(splited);
+}
+
+int	pars_color(char *line)
+{
+	char	**token;
+	int	r;
+	int	g;
+	int	b;
+
+	r = 0;
+	g = 0;
+	b = 0;
+	token = ft_split(line, ',');
+	if (!token || !token[0] || !token[1] || !token[2])
+		return (-1);
+	r = ft_atoi(token[0]);
+	g = ft_atoi(token[1]);
+	b = ft_atoi(token[2]);
+	free_tab(token);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		return (-1);
+	return(r * 256 * 256 + g * 256 + b);
 }

@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 17:26:49 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:13:42 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*space(const char *s);
 char	**read_file(int fd, t_pars *data);
 void parse_line(char *line, t_pars *data);
 int check_prefix(char *line, char *prefix);
+int	pars_color(char *line);
 
 #endif

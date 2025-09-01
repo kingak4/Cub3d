@@ -1,3 +1,4 @@
 mlx/
 # Pliki obiektowe
 *.o
+libft/ *.o

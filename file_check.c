@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:14:29 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 17:25:01 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:45:12 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ int check_prefix(char *line, char *prefix)
 	return (0);
 }
 
-int checker_first(char *line)
+int checker_first(char *line, int *found)
 {
-	int found[6];
 
-	ft_bzero(found, sizeof(found));
 	if (check_prefix(line, "NO "))
 		found[0] = 1;
 	else if (check_prefix(line, "SO "))
@@ -70,8 +68,9 @@ int checker_first(char *line)
 		found[5] = 1;
 	if (found[0] && found[1] && found[2] && found[3] && found[4] && found[5])
 		return (1);
-	write(1, "wrong map \n", 11);
-	return (0);
+	else 
+		return (0);
+	return (1);
 }
 
 char **append_line(char **lines, char *new_line, int count)
@@ -88,19 +87,22 @@ char **append_line(char **lines, char *new_line, int count)
 		new_tab[i] = lines[i];
 		i++;
 	}
-	new_tab[i] = new_line;
+	new_tab[i] = ft_strdup(new_line);
 	new_tab[i + 1] = NULL;
 	free(lines);
 	return (new_tab);
 }
-char **read_file(int fd, t_pars *data)
+char	**read_file(int fd, t_pars *data)
 {
 	char *line;
 	char **map;
 	int count;
+	int found[6];
 
 	count = 0;
 	map = NULL;
+
+	ft_bzero(found, sizeof(found));
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -110,7 +112,7 @@ char **read_file(int fd, t_pars *data)
 			line = get_next_line(fd);
 			continue;
 		}
-		if (checker_first(line))
+		if (checker_first(line, found))
 			parse_line(line, data);
 		else
 		{
