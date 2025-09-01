@@ -1,59 +1,7 @@
 cub3D – Mój pierwszy RayCaster z użyciem miniLibX
-Podsumowanie
 
-Ten projekt jest inspirowany światowej sławy grą Wolfenstein 3D, która uważana jest za pierwszy FPS w historii.
-Projekt umożliwi Ci zgłębienie działania ray-castingu.
 Twoim celem będzie stworzenie dynamicznego widoku wnętrza labiryntu, w którym będziesz musiał odnaleźć drogę.
 
-Wersja: 11.0
-
-Rozdział I – Wstęp (Foreword)
-
-Gra Wolfenstein 3D została stworzona przez firmę Id Software, kierowaną przez Johna Carmacka i Johna Romero, a wydana w 1992 roku przez Apogee Software.
-Wolfenstein 3D to pierwszy prawdziwy First Person Shooter w historii gier komputerowych.
-
-Gra jest przodkiem takich tytułów jak:
-
-Doom (Id Software, 1993)
-
-Doom II (Id Software, 1994)
-
-Duke Nukem 3D (3D Realms, 1996)
-
-Quake (Id Software, 1996)
-
-Teraz Twoja kolej, by przeżyć historię na nowo.
-
-Uwaga: Gra Wolfenstein 3D rozgrywa się w nazistowskich Niemczech, co może być potencjalnie niepokojące.
-Wzmianki o grze oraz jej historia zostały przywołane wyłącznie w celach technicznych i kulturowych, ponieważ gra jest uważana za arcydzieło.
-
-Rozdział II – Cele (Goals)
-
-Cele projektu są podobne do innych projektów z pierwszego roku:
-
-rygor w pracy,
-
-programowanie w języku C,
-
-algorytmy,
-
-umiejętność wyszukiwania informacji.
-
-Jako projekt graficzny cub3D pozwoli Ci rozwinąć umiejętności w zakresie:
-
-obsługi okien,
-
-kolorów,
-
-zdarzeń,
-
-wypełniania kształtów itp.
-
-To świetna okazja, aby poznać praktyczne zastosowania matematyki bez potrzeby głębokiego rozumienia jej teorii.
-Z pomocą dostępnych materiałów w internecie użyjesz matematyki jako narzędzia do tworzenia eleganckich i wydajnych algorytmów.
-
-Możesz przetestować oryginalną grę przed rozpoczęciem projektu:
-http://users.atw.hu/wolf3d/
 
 Rozdział III – Ogólne instrukcje (Common Instructions)
 
@@ -79,9 +27,6 @@ nie wykonuje niepotrzebnego ponownego linkowania.
 
 Makefile musi zawierać co najmniej reguły:
 $(NAME), all, clean, fclean, re.
-
-Aby dostarczyć bonusy, Makefile musi mieć regułę bonus, która dodaje wszystkie dodatkowe pliki nagłówkowe, biblioteki lub funkcje niedozwolone w części obowiązkowej.
-Pliki bonusowe muszą być w formacie _bonus.c / _bonus.h.
 
 Możesz użyć swojej libft, ale musisz skopiować jej źródła i Makefile do katalogu libft.
 Twój Makefile musi najpierw skompilować bibliotekę, a potem projekt.

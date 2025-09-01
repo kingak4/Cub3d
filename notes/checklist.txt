@@ -1,136 +1,118 @@
-Checklist z priorytetem (od łatwych do trudnych) + czas
+✅ Lista zadań do cub3D (mandatory part)
+1. Przygotowanie projektu
 
-L = łatwe, Śr = średnie, T = trudne. Czas to wysiłek łączny (robota jednej osoby).
+ Stwórz repo/projekt cub3D.
 
-Szkielet projektu i higiena (L, 3h)
-Struktura katalogów (src, include, assets, maps, mlx, libft).
-Makefile: all/clean/fclean/re/bonus, flagi, target na libft i MLX.
-Plik nagłówkowy z typami (t_game, t_cfg, t_tex, t_map), stałe.
-Funkcje util (error/exit, print, safe-free).
-Parser nagłówków .cub (identyfikatory) (Śr, 4h)
-NO/SO/WE/EA, F/C — kolejność dowolna, odstępy/linie puste dozwolone.
-Walidacja duplikatów, braków, ścieżek względnych/absolutnych (tylko parsowanie, bez ładowania).
-Kolory F/C (L, 2h)
-R,G,B w [0..255], spacje tolerowane, konwersja do 0x00RRGGBB.
-Błędy: za dużo/malo komponentów, spoza zakresu.
-Ścieżki do tekstur (L→Śr, 2h)
-Sprawdzenie istnienia pliku, rozszerzenie .xpm (lub to, czego używasz w MLX).
-Odrzucenie powtórek.
-Wczytanie mapy (Śr, 3h)
-Mapę czytasz jako ostatni blok; zachowujesz spacje (są częścią mapy).
-Normalizacja (przechowanie w char**) + zapamiętanie max szerokości.
-Walidacja mapy (T, 7h)
-Dozwolone znaki: 0,1, N,S,E,W, (spacja).
-Dokładnie jeden gracz.
-Zamknięcie mapy: klasyk — padding mapy spacjami + flood-fill/DFS po 0/start; jeśli sąsiad 0/gracza to spacja/poza mapą → błąd.
-Wykrycie „dziur”, rozwarstwień, wielowierszowych przerw.
-Zarządzanie zasobami i clean-exit (Śr, 3h)
-Jeden punkt zwalniania: tekstury, obraz, okno, mapa, cfg.
-Konsekwentne komunikaty Error\n....
-Inicjalizacja MLX + bufor obrazu (L, 2h)
-Okno (np. 960×640), mlx_new_image, mlx_get_data_addr.
-Pętla mlx_loop_hook, rysowanie pojedynczej ramki
-Obsługa wejścia i zamykania (L, 2h)
-Strzałki L/P — obrót; WASD — ruch; ESC i czerwony krzyżyk — czyste wyjście.
-Stan klawiszy (key press/release) dla płynności.
-Model gracza i kolizje (Śr, 4h)
-Pozycja startowa z mapy + wektor kierunku i „camera plane” (~66° FOV).
-Ruch przód/tył, strafy A/D, kolizja z 1 (zachowaj margines).
-Raycasting DDA — ściany bez tekstur (T, 8h)
-Promień na kolumnę, DDA do pierwszej kratki 1.
-Dystans „bez rybiego oka” (perpendicular).
-Projektowanie wysokości kolumny i malowanie pionowych pasków.
-Teksturowanie ścian (T, 8h)
-Załaduj XPM-y (NO/SO/WE/EA) — mlx_xpm_file_to_image.
-Wybór tekstury po orientacji trafienia (N/S/E/W).
-texX, step, texPos, adresowanie pikseli, szybkie kopiowanie do bufora.
-Kolory podłogi/sufitu (L, 2h)
-Szybkie wypełnienie połówek obrazu kolorami F/C (lub scanline’y).
-Polerka: wydajność, refaktor, Norm, leaki (Śr, 8h)
-Wyrzucenie zbędnych alokacji, prekomputacje, -O2 (opcjonalnie).
-Valgrind, testy okien (minimalizacja, zmiana focusu).
-Zestaw testów i map (Śr, 4h)
+ Dodaj Makefile (all, clean, fclean, re).
 
-„Dobre”: minimalna mapa, różne rozmiary, różne starty.
-„Złe”: brak identyfikatorów, duplikaty, RGB >255, otwarta mapa, dwa gracze, spacje w środku korytarza, dziury na krawędzi, złe rozszerzenie.
+ Dołącz libft (będzie potrzebna do parsowania).
 
+ Podłącz MiniLibX (upewnij się, że działa na Twoim systemie).
 
-Podział pracy dla 2 osób (bez przepychanek)
-Osoba A – „Parser/Map/Quality”
+2. Obsługa pliku .cub
 
-Zadania: 2, 3, 4, 5, 6, 7, 15.
+ Funkcja otwierająca i czytająca plik .cub.
 
-Klucz: niezawodny parser, żelazna walidacja, clean-up, testy/mapy.
-Artefakty: parser.c, map_reader.c, map_validate.c (flood_fill), config.c, errors.c, resources.c.
+ Walidacja rozszerzenia .cub.
 
-Osoba B – „Silnik/Render/Input”
+ Rozdzielenie danych wejściowych na sekcje:
 
-Zadania: 8, 9, 10, 11, 12, 13, 14.
+tekstury (NO, SO, WE, EA),
 
-Klucz: pętla renderująca, DDA, tekstury, sterowanie i kolizje.
-Artefakty: mlx_init.c, input.c, player.c, raycast.c, textures.c, draw.c.
+kolory (F, C),
 
-Wspólne / na start (1): szkielety, typy i interfejsy (include/cub3d.h):
-t_cfg (ścieżki, kolory), t_map (wymiary, dane), t_tex (ptr obrazka, dane), t_game (mlx, img, cfg, map, player).
-Kontrakt integracyjny: Osoba A dostarcza w pełni zweryfikowane t_cfg i t_map. Osoba B zakłada, że te struktury są poprawne — skupia się na renderze.
-Harmonogram (dni robocze)
+mapa (ostatnia część pliku).
 
-Dzień 1
+ Parsowanie tekstur (ścieżki do plików).
 
-Wspólnie: repo, Makefile, nagłówki, struktury, konwencje błędów.
+ Parsowanie kolorów (F, C → wartości RGB, sprawdzenie zakresu 0–255).
 
-A: identyfikatory + F/C (2–3h).
-B: inicjalizacja MLX + bufor + hooki (2–3h).
+ Zapisanie danych w strukturze (np. t_config).
 
-Dzień 2
+3. Walidacja mapy
 
-A: ścieżki tekstur, wczytanie mapy (3–4h).
-B: pusta ramka: rysowanie tła (F/C), pętla renderująca (3–4h).
+ Sprawdź, czy mapa istnieje i nie jest pusta.
 
-Dzień 3
+ Upewnij się, że zawiera tylko znaki: 0, 1, N, S, E, W, spacje.
 
-A: walidacja mapy (flood-fill, jedyny gracz, spacje) (5–7h).
-B: DDA bez tekstur (4–5h).
+ Sprawdź, czy jest dokładnie jedna pozycja gracza.
 
-Dzień 4
+ Sprawdź, czy mapa jest zamknięta ścianami (żaden 0 ani NSEW nie może dotykać „pustki/spacji”).
 
-A: menedżer zasobów + scenariusze błędów + testy złych plików (3–4h).
-B: ładowanie XPM + teksturowanie ścian (5–6h).
+ Przekonwertuj mapę na tablicę 2D w pamięci.
 
-Dzień 5
+4. Inicjalizacja gry
 
-A: wsparcie kolizji (logika mapy, helpery) (2–3h).
-B: ruch/obrót/strafy, korekcja dystansu, stabilizacja FPS (4–5h).
-Dzień 6
+ Stwórz okno w MiniLibX.
 
-Wspólnie: bug bash, wydajność, refaktor, Norm, Valgrind (6–8h).
-Pakiet map testowych, checklisty na obronę.
+ Załaduj tekstury (xpm → obrazek).
 
-Dzień 7 (bufor)
+ Zapisz pozycję gracza (x, y) i kierunek patrzenia (N, S, E, W).
 
-Szlify, dokumentacja, próba generalna, edge-case’y.
-Kryteria „Definition of Done” (kontrolna lista pod obronę)
-Wejście/wyjście:
-ESC i czerwony krzyżyk zamykają program czysto (bez leaków).
-Okno reaguje na zmianę focusu/minimalizację (brak zawieszeń).
+ Zainicjalizuj kolory podłogi i sufitu.
 
-Sterowanie:
-Strzałki: obrót w miejscu; WASD: ruch z kolizjami.
-Ruch płynny (trzymanie klawiszy), brak „drgawek”.
-Plik .cub:
-Przyjmuje poprawny plik (dowolna kolejność sekcji, puste linie).
-Każdy błąd → Error\n + jasny komunikat; brak segfaultów.
+5. Implementacja raycastingu
 
-Mapa:
-Dokładnie jeden gracz, mapa zamknięta (spacje poprawnie obsłużone).
-Dozwolone znaki tylko wg tematu.
+ Podziel ekran na pionowe paski (np. każdy piksel w poziomie = 1 promień).
 
-Grafika:
-Raycasting z korekcją „fish-eye”.
-Ściany z różnymi teksturami dla N/S/E/W.
-Sufit/podłoga w kolorach z F/C.
-Brak artefaktów na stykach ścian (prawidłowy texX).
+ Dla każdego promienia:
 
-Jakość:
-Norm OK, brak leaków (Valgrind clean lub akceptowalny noise z MLX).
-Czytelny kod, brak zbędnych globali, sensowny podział plików.
+Oblicz kąt względem kierunku gracza.
+
+Wysyłaj promień do momentu, aż trafi w ścianę (1).
+
+Oblicz odległość do ściany (uwzględnij korektę na „fish-eye”).
+
+ Wyznacz wysokość pionowej ściany do narysowania na ekranie.
+
+ Wybierz odpowiednią teksturę w zależności od strony ściany (N/S/E/W).
+
+ Dorysuj podłogę i sufit w odpowiednich kolorach.
+
+6. Sterowanie gracza
+
+ Obsłuż klawisze:
+
+W – idź do przodu,
+
+S – idź do tyłu,
+
+A – przesunięcie w lewo (strafe),
+
+D – przesunięcie w prawo (strafe),
+
+← i → – obrót kamery.
+
+ Dodaj kolizje (gracz nie może przechodzić przez ściany).
+
+ Obsłuż ESC → zamknięcie gry.
+
+ Obsłuż zamknięcie okna (kliknięcie czerwonego krzyżyka).
+
+7. Renderowanie obrazu
+
+ Rysuj scenę do bufora obrazu (mlx_image).
+
+ Wyświetlaj bufor w oknie (mlx_put_image_to_window).
+
+ Odświeżaj obraz przy każdym ruchu/obrocie.
+
+8. Obsługa błędów
+
+ Każdy błąd pliku .cub → Error\n<opis> i exit.
+
+ Każdy brakujący element (np. brak tekstury, brak koloru) → błąd.
+
+ Sprawdź, czy ścieżki do tekstur istnieją.
+
+ Pamiętaj o free() → brak wycieków pamięci.
+
+9. Testowanie
+
+ Testy minimalnej mapy.
+
+ Testy map z błędami (dziury, kilka graczy, złe kolory, złe ścieżki).
+
+ Testy dużych map.
+
+ Testy stabilności (np. minimalizowanie okna, kilka minut działania).
