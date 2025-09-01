@@ -1,4 +1,10 @@
 #include "cub3d.h"
+#include "mlx/mlx.h"
+#include <math.h>
+#include <stdlib.h> // For exit()
+#include <unistd.h>
+
+#define ROT_SPEED 0.05 // A small value for a smooth rotation speed
 
 // A simple pixel put function to draw on the image buffer
 void put_pixel_to_img(t_data *data, int x, int y, int color)
@@ -168,9 +174,72 @@ void raycast(t_data *data)
     }
 }
 
+// Handles key press events, setting the rotation state
+int key_press(int keycode, t_data *data)
+{
+
+    // Escape key to exit the program
+    if (keycode == 53)
+        exit(0);
+
+    // Left arrow key
+    if (keycode == 65361)
+        data->is_rotating_left = 1;
+    
+    // Right arrow key
+    if (keycode == 65363)
+        data->is_rotating_right = 1;
+    
+    return (0);
+}
+
+// Handles key release events, resetting the rotation state
+int key_release(int keycode, t_data *data)
+{
+    // Left arrow key
+    if (keycode == 65361)
+        data->is_rotating_left = 0;
+    
+    // Right arrow key
+    if (keycode == 65363)
+        data->is_rotating_right = 0;
+    
+    return (0);
+}
+
+// Handles window close event
+int close_window(t_data *data)
+{
+    (void)data; // Cast to void to avoid unused parameter warning
+    exit(0);
+    return (0);
+}
+
 // The main rendering loop function, called by mlx_loop_hook
 int render(t_data *data)
 {
+    // Continuous rotation logic
+    if (data->is_rotating_left)
+    {
+        double oldDirX = data->dirX;
+        data->dirX = data->dirX * cos(-ROT_SPEED) - data->dirY * sin(-ROT_SPEED);
+        data->dirY = oldDirX * sin(-ROT_SPEED) + data->dirY * cos(-ROT_SPEED);
+        double oldPlaneX = data->planeX;
+        data->planeX = data->planeX * cos(-ROT_SPEED) - data->planeY * sin(-ROT_SPEED);
+        data->planeY = oldPlaneX * sin(-ROT_SPEED) + data->planeY * cos(-ROT_SPEED);
+		usleep(10000);
+    }
+    if (data->is_rotating_right)
+    {
+        double oldDirX = data->dirX;
+        data->dirX = data->dirX * cos(ROT_SPEED) - data->dirY * sin(ROT_SPEED);
+        data->dirY = oldDirX * sin(ROT_SPEED) + data->dirY * cos(ROT_SPEED);
+        double oldPlaneX = data->planeX;
+        data->planeX = data->planeX * cos(ROT_SPEED) - data->planeY * sin(ROT_SPEED);
+        data->planeY = oldPlaneX * sin(ROT_SPEED) + data->planeY * cos(ROT_SPEED);
+		usleep(10000);
+    }
+
     // Clear the previous frame
     mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
     data->img.img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
@@ -205,6 +274,10 @@ int main(void)
     data.posX = 5.5; data.posY = 5.5;
     data.dirX = 1.0; data.dirY = 0.0;
     data.planeX = 0.0; data.planeY = 0.66;
+    
+    // Initialize key state
+    data.is_rotating_left = 0;
+    data.is_rotating_right = 0;
 
     // Initialize MLX and window
     data.mlx_ptr = mlx_init();
@@ -222,6 +295,13 @@ int main(void)
 
     // Set up the main loop hook
     mlx_loop_hook(data.mlx_ptr, &render, &data);
+    
+    // Set up the key press and release hooks for continuous action
+    mlx_hook(data.win_ptr, 2, 1L << 0, &key_press, &data);
+    mlx_hook(data.win_ptr, 3, 1L << 1, &key_release, &data);
+    
+    // Set up the window close hook
+    mlx_hook(data.win_ptr, 17, 1L << 17, &close_window, &data);
 
     // Start the MLX loop
     mlx_loop(data.mlx_ptr);
