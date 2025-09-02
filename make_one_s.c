@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:01:43 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 17:05:03 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/02 12:26:30 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_space(char c)
 
 static size_t	skip_start(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] && is_space(s[i]))
@@ -29,7 +29,7 @@ static size_t	skip_start(const char *s)
 
 static size_t	skip_end(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = ft_strlen(s) - 1;
 	while (i >= 0 && is_space(s[i]))
@@ -64,10 +64,10 @@ char	*space(const char *s)
 {
 	size_t		start;
 	size_t		end;
-	char	*result;
+	char		*result;
 
 	if (!s)
-		return NULL;
+		return (NULL);
 	start = skip_start(s);
 	end = skip_end(s);
 	if (end < start)
@@ -75,11 +75,11 @@ char	*space(const char *s)
 		result = malloc(1);
 		if (result)
 			result[0] = '\0';
-		return result;
+		return (result);
 	}
 	result = malloc(end - start + 2);
 	if (!result)
-		return NULL;
+		return (NULL);
 	copy_trimmed(s, start, end, result);
-	return result;
+	return (result);
 }

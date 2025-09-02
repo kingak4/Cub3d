@@ -1,4 +1,5 @@
-1. parsing scian oraz podlogi i sufitu. / NAPRAW CALY PARSING
+1. Zrob zapisz mapy i zachowaj ja w arrray prawidlow / bez leakow 
 2. Sprawdz czy jest na mapie player.
 3. sparwdz czy mamapa sie parwdlowo zapisala. 
 4. sparwdz scany mapy .
+5. Zapisz pozycje gracza x i y 

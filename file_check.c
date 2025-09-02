@@ -6,15 +6,15 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:14:29 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 18:45:12 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/02 12:52:03 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int ft_strcmp(char *s1, char *s2, size_t n)
+int	ft_strcmp(char *s1, char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!s1)
@@ -26,22 +26,9 @@ static int ft_strcmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
-int check_file(char *s)
+int	check_prefix(char *line, char *prefix)
 {
-	size_t len;
-
-	len = ft_strlen(s);
-	if (len < 4)
-		return (0);
-	if (ft_strcmp(s + len - 4, ".cub", 4))
-		return (1);
-	write(1, "wrong map file\n", 15);
-	return (0);
-}
-
-int check_prefix(char *line, char *prefix)
-{
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (prefix[i] && line[i] && prefix[i] == line[i])
@@ -51,32 +38,10 @@ int check_prefix(char *line, char *prefix)
 	return (0);
 }
 
-int checker_first(char *line, int *found)
+char	**append_line(char **lines, char *new_line, int count)
 {
-
-	if (check_prefix(line, "NO "))
-		found[0] = 1;
-	else if (check_prefix(line, "SO "))
-		found[1] = 1;
-	else if (check_prefix(line, "WE "))
-		found[2] = 1;
-	else if (check_prefix(line, "EA "))
-		found[3] = 1;
-	else if (check_prefix(line, "F"))
-		found[4] = 1;
-	else if (check_prefix(line, "C"))
-		found[5] = 1;
-	if (found[0] && found[1] && found[2] && found[3] && found[4] && found[5])
-		return (1);
-	else 
-		return (0);
-	return (1);
-}
-
-char **append_line(char **lines, char *new_line, int count)
-{
-	char **new_tab;
-	int i;
+	char	**new_tab;
+	int		i;
 
 	new_tab = malloc(sizeof(char *) * (count + 2));
 	if (!new_tab)
@@ -92,35 +57,37 @@ char **append_line(char **lines, char *new_line, int count)
 	free(lines);
 	return (new_tab);
 }
+
 char	**read_file(int fd, t_pars *data)
 {
-	char *line;
-	char **map;
-	int count;
-	int found[6];
+	char	*line; // need to make good copy of the map ande dele leaks
+	char	**map = NULL;
+	int		count = 0;
+	int		found[6] = {0};
 
-	count = 0;
-	map = NULL;
-
-	ft_bzero(found, sizeof(found));
-	line = get_next_line(fd);
-	while (line)
+	while ((line = get_next_line(fd)))
 	{
-		if (*line == '\0')
+		char *trimmed = space(line);
+		free(line);
+		if (*trimmed == '\0')
 		{
-			free(line);
-			line = get_next_line(fd);
+			free(trimmed);
 			continue;
 		}
-		if (checker_first(line, found))
-			parse_line(line, data);
+		if (is_no(trimmed) || is_so(trimmed) || is_we(trimmed) ||
+			is_ea(trimmed) || is_floor(trimmed) || is_ceiling(trimmed))
+		{
+			set_found_flag(trimmed, found);
+			parse_line(trimmed, data);
+			p_f_and_c(trimmed, data);
+		}
 		else
 		{
-			map = append_line(map, line, count);
+			map = append_line(map, trimmed, count);
 			count++;
 		}
-		free(line);
-		line = get_next_line(fd);
+
+		free(trimmed);
 	}
 	return (map);
 }

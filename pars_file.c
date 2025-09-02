@@ -6,17 +6,26 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/01 18:24:41 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/02 12:50:43 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void parse_line(char *line, t_pars *data)
+void	init_pars(t_pars *data)
 {
-	char *value;
-	
-	value = space(line);
+	data->n_wall = NULL;
+	data->s_wall = NULL;
+	data->e_wall = NULL;
+	data->w_wall = NULL;
+	data->floor = -1;
+	data->celling = -1;
+}
+
+void	parse_line(char *line, t_pars *data)
+{
+	char	*value;
+
 	if (check_prefix(line, "NO "))
 	{
 		value = line + 3;
@@ -37,16 +46,6 @@ void parse_line(char *line, t_pars *data)
 		value = line + 3;
 		data->e_wall = ft_strdup(value);
 	}
-	else if (check_prefix(line, "F "))
-	{
-		value = line + 2;
-		data->floor = pars_color(value);
-	}
-	else if (check_prefix(line, "C "))
-	{
-		value = line + 2;
-		data->celling = pars_color(value);
-	}
 }
 
 void	free_tab(char **splited)
@@ -65,9 +64,9 @@ void	free_tab(char **splited)
 int	pars_color(char *line)
 {
 	char	**token;
-	int	r;
-	int	g;
-	int	b;
+	int		r;
+	int		g;
+	int		b;
 
 	r = 0;
 	g = 0;
@@ -81,5 +80,5 @@ int	pars_color(char *line)
 	free_tab(token);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (-1);
-	return(r * 256 * 256 + g * 256 + b);
+	return (r * 256 * 256 + g * 256 + b);
 }
