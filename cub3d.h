@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/02 10:32:44 by korzecho         ###   ########.fr       */
+/*   Updated: 2025/09/02 11:50:40 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define MAP_SIZE_H 12
 # define TILE_SIZE 30 // Size in pixels for each map tile
 
+
 // A structure to hold all the data pointers and game state
 typedef struct s_img {
     void    *img_ptr;
@@ -38,7 +39,6 @@ typedef struct s_data {
     void    *mlx_ptr;
     void    *win_ptr;
     t_img   img;
-
 
 	int is_rotating_left;
     int is_rotating_right;

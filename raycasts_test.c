@@ -115,6 +115,7 @@ void raycast(t_data *data)
         for (int y = drawStart; y < drawEnd; y++)
         {
             put_pixel_to_img(data, x, y, color);
+			//mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, color); //FOR TESTING AND SHOWING
         }
         
         // Draw floor and ceiling
@@ -122,10 +123,12 @@ void raycast(t_data *data)
         for(int y = drawEnd; y < WIN_H; y++)
         {
             put_pixel_to_img(data, x, y, 0x4B371C); // Brown floor
+			//mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, 0x40c9b9); //FOR TESTING AND SHOWING
         }
         for(int y = 0; y < drawStart; y++)
         {
             put_pixel_to_img(data, x, y, 0x40c9b9); // Grey ceiling
+			//mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, 0x40c9b9); //FOR TESTING AND SHOWING
         }
     }
 }
