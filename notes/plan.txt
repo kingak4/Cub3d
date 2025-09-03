@@ -1,5 +1,4 @@
-1. Zrob zapisz mapy i zachowaj ja w arrray prawidlow / bez leakow 
-2. Sprawdz czy jest na mapie player.
-3. sparwdz czy mamapa sie parwdlowo zapisala. 
-4. sparwdz scany mapy .
-5. Zapisz pozycje gracza x i y 
+1. sprawdzis na etapi parsingu czy istnie pilik textury oraz czy jest dobry format xpm
+2. sprawdz czy sa 4 lub 2 liczny do koloru
+3. Sprawdz czy jest na mapie player i Zapisz pozycje gracza x i y 
+4. sparwdz boki mapy .
