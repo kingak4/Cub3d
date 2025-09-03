@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 09:56:52 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:54:07 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ typedef struct s_pars
 	char	*w_wall;
 	int		floor;
 	int		celling;
+	char	**map;
 }	t_pars;
 
 // checkers for files
 int		check_file(char *s); // is file correct
 char	*space(const char *s); // make on space and delite spaces in start and the end
 int		check_prefix(char *line, char *prefix);
-char	**read_file(int fd, t_pars *data);
+void	read_file(int fd, t_pars *data);
 void	parse_line(char *line, t_pars *data);
 void	p_f_and_c(char *line, t_pars *data);
 int		pars_color(char *line);

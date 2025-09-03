@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/02 12:50:43 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:51:50 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_pars(t_pars *data)
 	data->w_wall = NULL;
 	data->floor = -1;
 	data->celling = -1;
+	data->map = NULL;
 }
 
 void	parse_line(char *line, t_pars *data)
