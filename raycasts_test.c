@@ -258,12 +258,17 @@ int main(void)
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};	
 
-
-	for (int y = 0; y < MAP_SIZE_H; y++) {
-        for (int x = 0; x < MAP_SIZE_W; x++) {
-            data.worldMap[y][x] = worldMap[y][x];
-        }
-    }
+	int y = 0;
+	while (y < MAP_SIZE_H)
+	{
+		int x = 0;
+		while (x < MAP_SIZE_W)
+		{
+			data.worldMap[y][x] = worldMap[y][x];
+			x++;
+		}
+		y++;
+	}
     
     data.posX = 2.0; data.posY = 2.0;
     data.dirX = 1.0; data.dirY = 0.0;
