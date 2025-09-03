@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 11:54:07 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/03 12:19:47 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ typedef struct s_pars
 	char	**map;
 }	t_pars;
 
-// checkers for files
+// parsing and reading map file
 int		check_file(char *s); // is file correct
-char	*space(const char *s); // make on space and delite spaces in start and the end
+char	*space(const char *s); // make on space
 int		check_prefix(char *line, char *prefix);
-void	read_file(int fd, t_pars *data);
+void	read_file(int fd, t_pars *data); // reading file
 void	parse_line(char *line, t_pars *data);
 void	p_f_and_c(char *line, t_pars *data);
 int		pars_color(char *line);
@@ -48,6 +48,7 @@ int		is_ea(char *line);
 int		is_floor(char *line);
 int		is_ceiling(char *line);
 
+// flag for checkers
 void	set_found_flag(char *line, int *found); // setting flags
 int		all_headers_found(int *found); // finnal check for flags
 
