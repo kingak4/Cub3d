@@ -4,7 +4,7 @@ NAME = cub3d
 RM = rm -rf
 AR = ar rcs
 
-FILES = raycasts_test.c
+FILES = main1.c hooks.c raycasts.c utils.c rotate_and_move.c
 OBJS = $(FILES:.c=.o) 
 
 LIBFT_PATH = libft

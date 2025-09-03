@@ -242,7 +242,8 @@ int render(t_data *data)
 int main(void)
 {
     t_data data;
-
+	int		x;
+	int		y;
     int worldMap[12][24] = {
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -258,10 +259,11 @@ int main(void)
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};	
 
-	int y = 0;
+
+	y = 0;
 	while (y < MAP_SIZE_H)
 	{
-		int x = 0;
+		x = 0;
 		while (x < MAP_SIZE_W)
 		{
 			data.worldMap[y][x] = worldMap[y][x];
