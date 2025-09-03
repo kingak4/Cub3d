@@ -43,6 +43,13 @@ typedef struct s_data
 	t_img	textures[4];
 }	t_data;
 
+typedef struct s_tex_params
+{
+	double	tex_step;
+	double	tex_pos;
+	int		tex_x;
+}	t_tex_params;
+
 typedef struct s_ray
 {
 	double	camera_x;
@@ -82,4 +89,6 @@ void	rotate_right(t_data *data);
 void	rotate_left(t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
+//Wall rendering
+void	draw_wall_slice(t_data *data, t_ray *ray, int x);
 #endif

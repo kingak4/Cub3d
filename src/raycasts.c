@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static void	set_ray_props(t_ray *ray, t_data *data, int x)
 {
@@ -62,65 +62,24 @@ static void	dda_algo(t_ray *ray, t_data *data)
 		ray->step_y = 1;
 		ray->side_dist_y = (ray->map_y + 1.0 - data->pos_y) * ray->delta_dist_y;
 	}
-
 	on_dda_hit(ray, data);
-	/*
-	while (ray->hit == 0)
-	{
-		if (ray->side_dist_x < ray->side_dist_y)
-		{
-			ray->side_dist_x += ray->delta_dist_x;
-			ray->map_x += ray->step_x;
-			ray->side = 0;
-		}
-		else
-		{
-			ray->side_dist_y += ray->delta_dist_y;
-			ray->map_y += ray->step_y;
-			ray->side = 1;
-		}
-		if (ray->map_x >= 0 && ray->map_x < MAP_SIZE_W
-			&& ray->map_y >= 0 && ray->map_y < MAP_SIZE_H
-			&& data->world_map[ray->map_y][ray->map_x] > 0)
-			ray->hit = 1;
-	}
-	*/
 }
 
-static void	draw_wall_slice(t_data *data, t_ray *ray, int x)
+void	set_texture_number(t_ray *ray)
 {
-	double			wall_x;
-	int				tex_x;
-	double			tex_step;
-	double			tex_pos;
-	int				y;
-	int				tex_y;
-	unsigned int	color;
-
 	if (ray->side == 0)
-		wall_x = data->pos_y + ray->perp_wall_dist * ray->ray_dir_y;
-	else
-		wall_x = data->pos_x + ray->perp_wall_dist * ray->ray_dir_x;
-	wall_x -= floor(wall_x);
-	tex_x = (int)(wall_x * (double)TEX_SIZE);
-	if (ray->side == 0 && ray->ray_dir_x > 0)
-		tex_x = TEX_SIZE - tex_x - 1;
-	if (ray->side == 1 && ray->ray_dir_y < 0)
-		tex_x = TEX_SIZE - tex_x - 1;
-	tex_step = 1.0 * data->textures[ray->tex_num].height / ray->line_height;
-	tex_pos = (ray->draw_start - WIN_H / 2.0 + ray->line_height / 2.0)
-		* tex_step;
-	y = ray->draw_start;
-	while (y < ray->draw_end)
 	{
-		tex_y = (int)tex_pos;
-		color = *((unsigned int *)(data->textures[ray->tex_num].addr
-					+ (tex_y * data->textures[ray->tex_num].line_length
-						+ tex_x * (data->textures[ray->tex_num].bits_per_pixel
-							/ 8))));
-		put_pixel_to_img(data, x, y, color);
-		tex_pos += tex_step;
-		y++;
+		if (ray->ray_dir_x > 0)
+			ray->tex_num = 2;
+		else
+			ray->tex_num = 3;
+	}
+	else
+	{
+		if (ray->ray_dir_y > 0)
+			ray->tex_num = 1;
+		else
+			ray->tex_num = 0;
 	}
 }
 
@@ -146,20 +105,7 @@ void	raycast(t_data *data)
 		ray.draw_end = ray.line_height / 2 + WIN_H / 2;
 		if (ray.draw_end >= WIN_H)
 			ray.draw_end = WIN_H - 1;
-		if (ray.side == 0)
-		{
-			if (ray.ray_dir_x > 0)
-				ray.tex_num = 2;
-			else
-				ray.tex_num = 3;
-		}
-		else
-		{
-			if (ray.ray_dir_y > 0)
-				ray.tex_num = 1;
-			else
-				ray.tex_num = 0;
-		}
+		set_texture_number(&ray);
 		draw_wall_slice(data, &ray, x);
 		draw_floor_ceiling(data, &ray, x);
 		x++;

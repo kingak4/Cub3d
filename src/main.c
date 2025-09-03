@@ -1,5 +1,4 @@
-#include "cub3d.h"
-#include "mlx/mlx.h"
+#include "../cub3d.h"
 
 int	render(t_data *data)
 {
