@@ -4,7 +4,7 @@ NAME = cub3d
 RM = rm -rf
 AR = ar rcs
 
-FILES = main.c file_check.c make_one_s.c pars_file.c is_ok.c checkers_p2.c
+FILES = main.c file_check.c make_one_s.c pars_file.c is_ok.c checkers_p2.c read_map.c
 OBJS = $(FILES:.c=.o) 
 
 LIBFT_PATH = libft

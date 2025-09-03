@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/02 12:52:11 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/03 09:51:28 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		pars_color(char *line);
 void	free_tab(char **splited);
 void	init_pars(t_pars *data);
 int		ft_strcmp(char *s1, char *s2, size_t n);
+char	**append_line(char **lines, char *new_line, int count);
 
 //small checker for walls 
 int		is_no(char *line);

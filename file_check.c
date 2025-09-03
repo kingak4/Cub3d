@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:14:29 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/02 12:52:03 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/03 09:51:12 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,36 +58,3 @@ char	**append_line(char **lines, char *new_line, int count)
 	return (new_tab);
 }
 
-char	**read_file(int fd, t_pars *data)
-{
-	char	*line; // need to make good copy of the map ande dele leaks
-	char	**map = NULL;
-	int		count = 0;
-	int		found[6] = {0};
-
-	while ((line = get_next_line(fd)))
-	{
-		char *trimmed = space(line);
-		free(line);
-		if (*trimmed == '\0')
-		{
-			free(trimmed);
-			continue;
-		}
-		if (is_no(trimmed) || is_so(trimmed) || is_we(trimmed) ||
-			is_ea(trimmed) || is_floor(trimmed) || is_ceiling(trimmed))
-		{
-			set_found_flag(trimmed, found);
-			parse_line(trimmed, data);
-			p_f_and_c(trimmed, data);
-		}
-		else
-		{
-			map = append_line(map, trimmed, count);
-			count++;
-		}
-
-		free(trimmed);
-	}
-	return (map);
-}
