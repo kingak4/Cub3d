@@ -6,11 +6,25 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 09:01:28 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 09:51:57 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/03 09:57:07 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_pars(t_pars *pars)
+{
+	if (!pars)
+		return ;
+	if (pars->n_wall)
+		free(pars->n_wall);
+	if (pars->s_wall)
+		free(pars->s_wall);
+	if (pars->e_wall)
+		free(pars->e_wall);
+	if (pars->w_wall)
+		free(pars->w_wall);
+}
 
 char	**read_file(int fd, t_pars *data)
 {
@@ -46,6 +60,7 @@ char	**read_file(int fd, t_pars *data)
 		|| data->floor == -1 || data->celling == -1)
 	{
 		write(2, "Error: missing texture or color\n", 33);
+		free_pars(data);
 		exit(1);
 	}
 	return (map);
