@@ -1,7 +1,7 @@
-NO  img/ael-bekk.xpm
-SO img/mel-hada.xpm
-WE img/mabenchi.xpm
-EA img/zboudair.xpm
+NO textures/wall_N.xpm
+SO textures/wall_S.xpm
+WE textures/wall_W.xpm
+EA textures/wall_E.xpm
 
 F 98,105,109
 C 80,130,200

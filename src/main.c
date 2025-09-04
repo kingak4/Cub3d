@@ -46,11 +46,11 @@ int	close_window(t_data *data)
 	return (0);
 }
 
-int	main(void)
+int	main_raycaster(t_pars *map_data)
 {
 	t_data	data;
 
-	ft_init_data(&data);
+	ft_init_data(&data, map_data);
 	ft_init_map(&data);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)

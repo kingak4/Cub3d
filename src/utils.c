@@ -1,7 +1,8 @@
 #include "../cub3d.h"
 
-void	ft_init_data(t_data *data)
+void	ft_init_data(t_data *data, t_pars *map_data)
 {
+	data->map_data = map_data;
 	data->pos_x = 2.0;
 	data->pos_y = 2.0;
 	data->dir_x = 1.0;
@@ -40,13 +41,13 @@ int	load_texture(t_data *data, t_img *tex_img, char *path)
 
 int	load_textures(t_data *data)
 {
-	if (load_texture(data, &data->textures[0], "./textures/wall_N.xpm"))
+	if (load_texture(data, &data->textures[0], data->map_data->n_wall))
 		return (1);
-	if (load_texture(data, &data->textures[1], "./textures/wall_S.xpm"))
+	if (load_texture(data, &data->textures[1], data->map_data->s_wall))
 		return (1);
-	if (load_texture(data, &data->textures[2], "./textures/wall_E.xpm"))
+	if (load_texture(data, &data->textures[2], data->map_data->e_wall))
 		return (1);
-	if (load_texture(data, &data->textures[3], "./textures/wall_W.xpm"))
+	if (load_texture(data, &data->textures[3], data->map_data->w_wall))
 		return (1);
 	return (0);
 }
@@ -71,32 +72,6 @@ void	draw_floor_ceiling(t_data *data, t_ray *ray, int x)
 
 void	ft_init_map(t_data *data)
 {
-	int		x;
-	int		y;
-	int		world_map[12][24] = {
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,1,1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1},
-	{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1},
-	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-	{1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-	};
-
-	y = 0;
-	while (y < MAP_SIZE_H)
-	{
-		x = 0;
-		while (x < MAP_SIZE_W)
-		{
-			data->world_map[y][x] = world_map[y][x];
-			x++;
-		}
-		y++;
-	}
+	//IF MAP EXIST!!!
+	data->world_map = data->map_data->map;
 }

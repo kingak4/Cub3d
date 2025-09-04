@@ -2,8 +2,12 @@
 # define CUB3D_H
 
 # include "mlx/mlx.h"
+# include "libft/libft.h"
 # include <math.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 # define WIN_W 1000
 # define WIN_H 600
@@ -46,12 +50,13 @@ typedef struct s_data
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	int		world_map[MAP_SIZE_H][MAP_SIZE_W];
+	char	**world_map;
 	int		is_rotating_left;
 	int		is_rotating_right;
 	int		is_moving_forward;
 	int		is_moving_backward;
 	t_img	textures[4];
+	t_pars	*map_data;
 }	t_data;
 
 typedef struct s_tex_params
@@ -84,6 +89,9 @@ typedef struct s_ray
 }	t_ray;
 
 // Functions
+
+int	main_raycaster(t_pars *map_data);
+
 void	put_pixel_to_img(t_data *data, int x, int y, int color);
 int		load_texture(t_data *data, t_img *tex_img, char *path);
 int		load_textures(t_data *data);
@@ -93,7 +101,7 @@ int		key_release(int keycode, t_data *data);
 int		close_window(t_data *data);
 void	clean_exit(t_data *data);
 void	raycast(t_data *data);
-void	ft_init_data(t_data *data);
+void	ft_init_data(t_data *data, t_pars *map_data);
 void	ft_init_map(t_data *data);
 //Rotation and movement
 void	rotate_right(t_data *data);
