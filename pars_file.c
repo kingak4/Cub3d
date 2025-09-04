@@ -6,13 +6,13 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 11:51:50 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 11:09:10 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_pars(t_pars *data)
+void	init_pars(t_pars *data, t_vector2 *node)
 {
 	data->n_wall = NULL;
 	data->s_wall = NULL;
@@ -21,6 +21,8 @@ void	init_pars(t_pars *data)
 	data->floor = -1;
 	data->celling = -1;
 	data->map = NULL;
+	node->x = 0;
+	node->y = 0;
 }
 
 void	parse_line(char *line, t_pars *data)
@@ -74,7 +76,11 @@ int	pars_color(char *line)
 	b = 0;
 	token = ft_split(line, ',');
 	if (!token || !token[0] || !token[1] || !token[2])
+	{
+		if (token)
+			free_tab(token);
 		return (-1);
+	}
 	r = ft_atoi(token[0]);
 	g = ft_atoi(token[1]);
 	b = ft_atoi(token[2]);

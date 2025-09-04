@@ -1,4 +1,4 @@
 1. sprawdzis na etapi parsingu czy istnie pilik textury oraz czy jest dobry format xpm
-2. sprawdz czy sa 4 lub 2 liczny do koloru
-3. Sprawdz czy jest na mapie player i Zapisz pozycje gracza x i y 
+2. sprawdz czy sa 4 lub 2 liczny do koloru | NAPRAW LEAKI !
+3. Jesli brak gracza nie laduj mapy 
 4. sparwdz boki mapy .

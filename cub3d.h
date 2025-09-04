@@ -31,6 +31,13 @@ typedef struct s_pars
 	char	**map;
 }	t_pars;
 
+// where is player
+typedef struct s_vector2
+{
+	int	x;
+	int	y;
+} t_vector2;
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -122,7 +129,7 @@ void	read_file(int fd, t_pars *data); // reading file
 void	parse_line(char *line, t_pars *data);
 void	p_f_and_c(char *line, t_pars *data);
 int		pars_color(char *line);
-void	init_pars(t_pars *data);
+void	init_pars(t_pars *data, t_vector2 *node);
 int		ft_strcmp(char *s1, char *s2, size_t n);
 char	**append_line(char **lines, char *new_line, int count);
 
@@ -141,5 +148,6 @@ int		all_headers_found(int *found); // finnal check for flags
 // clean code
 void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
+int	find_palyer(t_vector2 *node, t_pars *data);
 
 #endif

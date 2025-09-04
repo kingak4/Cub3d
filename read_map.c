@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 09:01:28 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 14:32:31 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:20:31 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,16 @@ void	read_file(int fd, t_pars *data)
 	char	*line;
 	int		count;
 	int		found[6];
+	size_t	len;
 
 	count = 0;
 	ft_memset(found, 0, sizeof(found));
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
+		len = ft_strlen(line);
+		if (len > 0 && line[len - 1] == '\n')
+			line[len - 1] = '\0';
 		if (*line == '\0')
 		{
 			free(line);
