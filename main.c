@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:50:22 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 10:23:52 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:25:38 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,8 @@ int main(int argc, char **argv)
 		printf("player x =  %d\n", node.x);
 		printf("player y =  %d\n", node.y);
 	}
+	else
+		printf("brak gracza\n");
 
     free(data.n_wall);
     free(data.s_wall);
