@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 16:47:15 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 09:27:14 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 11:41:28 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,13 @@ int	find_palyer(t_vector2 *node, t_pars *data)
 		y++;
 	}
 	return (0);
+}
+int	is_player(t_vector2 *node, t_pars *data)
+{
+	if (find_palyer(node, data) == 0)
+	{
+		write(2, "Error: no player on the map\n", 28);
+		return (0);
+	}
+	return (1);
 }

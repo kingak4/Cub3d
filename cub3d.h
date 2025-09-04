@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 10:22:06 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:08:59 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_pars
 	int		floor;
 	int		celling;
 	char	**map;
+	int		w;
+	int		h;
 }	t_pars;
 
 // where is player
@@ -61,6 +63,12 @@ int		all_headers_found(int *found); // finnal check for flags
 // clean code
 void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
-int	find_palyer(t_vector2 *node, t_pars *data);
+// palyer
+int		find_palyer(t_vector2 *node, t_pars *data);
+int		is_player(t_vector2 *node, t_pars *data);
+
+// checking texture 
+int		check_f(char *path);
+int		check_textures(t_pars *data);
 
 #endif

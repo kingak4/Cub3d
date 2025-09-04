@@ -6,14 +6,13 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:50:22 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 10:25:38 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:27:49 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-//int main(int ac, char *av[])
+// int main(int ac, char *av[])
 //{
 //	char	*map;
 //	int		fd;
@@ -31,9 +30,9 @@
 //		perror("Error opening file");
 //		return (1);
 //	}
-	
+
 //}
-//int main(int ac, char *av[])
+// int main(int ac, char *av[])
 //{
 //    int fd;
 //    char **map;
@@ -91,7 +90,7 @@
 //    return (0);
 //}
 
-//int main(int argc, char **argv)
+// int main(int argc, char **argv)
 //{
 //	t_pars data;
 //	int fd;
@@ -123,63 +122,66 @@
 //}
 int main(int argc, char **argv)
 {
-    t_pars data;
+	t_pars data;
 	t_vector2 node;
-    int fd;
-    int i;
+	int fd;
+	int i;
 
-    if (argc != 2)
-        return (write(1, "Usage: ./cub3d <map.cub>\n", 26), 1);
+	if (argc != 2)
+		return (write(1, "Usage: ./cub3d <map.cub>\n", 26), 1);
 
-    init_pars(&data, &node);   // inicjalizacja struktury
+	init_pars(&data, &node); // inicjalizacja struktury
 
-    fd = open(argv[1], O_RDONLY);
-    if (fd < 0)
-        return (write(1, "Error: cannot open file\n", 24), 1);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (write(1, "Error: cannot open file\n", 24), 1);
 
-    read_file(fd, &data);  // mapa wczytywana do data.map
-    close(fd);
+	read_file(fd, &data); // mapa wczytywana do data.map
+	close(fd);
 
-     //sprawdzenie danych w t_pars
-    printf("North wall: %s\n", data.n_wall);
-    printf("South wall: %s\n", data.s_wall);
-    printf("East wall: %s\n", data.e_wall);
-    printf("West wall: %s\n", data.w_wall);
-    printf("Floor: %#08x\n", data.floor);
-    printf("Celling: %#08x\n", data.celling);
-
-    // sprawdzenie mapy
-    if (!data.map)
-        printf("Mapa nie została poprawnie wczytana.\n");
-    else
-    {
-        printf("Mapa wczytana poprawnie:\n");
-        i = 0;
-        while (data.map[i])
-        {
-            printf("%s\n", data.map[i]);
-            i++;
-        }
-    }
-	if (find_palyer(&node, &data))
+	if (check_textures(&data) && is_player(&node, &data))
 	{
-		printf("player x =  %d\n", node.x);
-		printf("player y =  %d\n", node.y);
+		// sprawdzenie danych w t_pars
+		printf("North wall: %s\n", data.n_wall);
+		printf("South wall: %s\n", data.s_wall);
+		printf("East wall: %s\n", data.e_wall);
+		printf("West wall: %s\n", data.w_wall);
+		printf("Floor: %#08x\n", data.floor);
+		printf("Celling: %#08x\n", data.celling);
+
+		if (!data.map)
+			printf("Mapa nie została poprawnie wczytana.\n");
+		else
+		{
+			printf("Mapa wczytana poprawnie:\n");
+			i = 0;
+			while (data.map[i])
+			{
+				printf("%s\n", data.map[i]);
+				i++;
+			}
+		}
+		if (find_palyer(&node, &data))
+		{
+			printf("player x =  %d\n", node.x);
+			printf("player y =  %d\n", node.y);
+		}
+		else
+			printf("brak gracza\n");
 	}
-	else
-		printf("brak gracza\n");
+	// sprawdzenie mapy
 
-    free(data.n_wall);
-    free(data.s_wall);
-    free(data.e_wall);
-    free(data.w_wall);
+	free(data.n_wall);
+	free(data.s_wall);
+	free(data.e_wall);
+	free(data.w_wall);
 
-    if (data.map)
-    {
-        i = 0;
-        while (data.map[i])
-            free(data.map[i++]);
-        free(data.map);
-    }
-    return 0;
+	if (data.map)
+	{
+		i = 0;
+		while (data.map[i])
+			free(data.map[i++]);
+		free(data.map);
+	}
+	return 0;
 }

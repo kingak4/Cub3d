@@ -1,4 +1,6 @@
-1. sprawdzis na etapi parsingu czy istnie pilik textury oraz czy jest dobry format xpm
-2. sprawdz czy sa 4 lub 2 liczny do koloru | NAPRAW LEAKI !
-3. Jesli brak gracza nie laduj mapy 
+1. Walidacja innych znakow na mapie 
+3. dodja liczenie mapy szeroekosz i wysokosc najbardzij najdlusze punkty najabrdzij wysuniete licz to do ostaniteienj 1 
+3. norma 
+
+----------
 4. sparwdz boki mapy .
