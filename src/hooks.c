@@ -1,8 +1,9 @@
 #include "../cub3d.h"
+#include <stdio.h>
 
 int	key_press(int keycode, t_data *data)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 		clean_exit(data);
 	if (keycode == 65361)
 		data->is_rotating_left = 1;
@@ -17,7 +18,7 @@ int	key_press(int keycode, t_data *data)
 
 int	key_release(int keycode, t_data *data)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 		clean_exit(data);
 	if (keycode == 65361)
 		data->is_rotating_left = 0;

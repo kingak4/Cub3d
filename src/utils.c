@@ -3,8 +3,8 @@
 void	ft_init_data(t_data *data, t_pars *map_data)
 {
 	data->map_data = map_data;
-	data->pos_x = 2.0;
-	data->pos_y = 2.0;
+	data->pos_x = 15.0;
+	data->pos_y = 4.0;
 	data->dir_x = 1.0;
 	data->dir_y = 0.0;
 	data->plane_x = 0.0;

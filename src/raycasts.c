@@ -19,6 +19,7 @@ static void	set_ray_props(t_ray *ray, t_data *data, int x)
 
 static void	on_dda_hit(t_ray *ray, t_data *data)
 {
+	ray->hit = 0;
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -34,9 +35,15 @@ static void	on_dda_hit(t_ray *ray, t_data *data)
 			ray->side = 1;
 		}
 		if (ray->map_x >= 0 && ray->map_x < MAP_SIZE_W
-			&& ray->map_y >= 0 && ray->map_y < MAP_SIZE_H
-			&& data->world_map[ray->map_y][ray->map_x] == '1')
+			&& ray->map_y >= 0 && ray->map_y < MAP_SIZE_H)
+		{
+			if (data->world_map[ray->map_y][ray->map_x] == '1')
+				ray->hit = 1;
+		}
+		else
+		{
 			ray->hit = 1;
+		}
 	}
 }
 

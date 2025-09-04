@@ -11,8 +11,11 @@
 
 # define WIN_W 1000
 # define WIN_H 600
-# define MAP_SIZE_W 24
-# define MAP_SIZE_H 12
+//STRUCTRE DATA H & W!!!!
+//{
+# define MAP_SIZE_W 29
+# define MAP_SIZE_H 11
+//}
 # define TEX_SIZE 128
 # define ROT_SPEED 0.005
 # define MOVE_SPEED 0.008
