@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 12:08:59 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:55:41 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ int		all_headers_found(int *found); // finnal check for flags
 // clean code
 void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
-// palyer
+// palyer && map checking 
 int		find_palyer(t_vector2 *node, t_pars *data);
 int		is_player(t_vector2 *node, t_pars *data);
+int		map_check(t_pars *data);
+int		is_map_ok(t_pars *data);
 
 // checking texture 
 int		check_f(char *path);

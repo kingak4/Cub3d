@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:50:22 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 12:27:49 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:55:55 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 	read_file(fd, &data); // mapa wczytywana do data.map
 	close(fd);
 
-	if (check_textures(&data) && is_player(&node, &data))
+	if (check_textures(&data) && is_player(&node, &data) && is_map_ok(&data))
 	{
 		// sprawdzenie danych w t_pars
 		printf("North wall: %s\n", data.n_wall);
