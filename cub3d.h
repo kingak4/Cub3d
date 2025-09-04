@@ -13,6 +13,17 @@
 # define ROT_SPEED 0.005
 # define MOVE_SPEED 0.008
 
+typedef struct s_pars
+{
+	char	*n_wall;
+	char	*s_wall;
+	char	*e_wall;
+	char	*w_wall;
+	int		floor;
+	int		celling;
+	char	**map;
+}	t_pars;
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -91,4 +102,33 @@ void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 //Wall rendering
 void	draw_wall_slice(t_data *data, t_ray *ray, int x);
+
+// parsing and reading map file
+int		check_file(char *s); // is file correct
+char	*space(const char *s); // make on space
+int		check_prefix(char *line, char *prefix);
+void	read_file(int fd, t_pars *data); // reading file
+void	parse_line(char *line, t_pars *data);
+void	p_f_and_c(char *line, t_pars *data);
+int		pars_color(char *line);
+void	init_pars(t_pars *data);
+int		ft_strcmp(char *s1, char *s2, size_t n);
+char	**append_line(char **lines, char *new_line, int count);
+
+//small checker for walls 
+int		is_no(char *line);
+int		is_so(char *line);
+int		is_we(char *line);
+int		is_ea(char *line);
+int		is_floor(char *line);
+int		is_ceiling(char *line);
+
+// flag for checkers
+void	set_found_flag(char *line, int *found); // setting flags
+int		all_headers_found(int *found); // finnal check for flags
+
+// clean code
+void	free_tab(char **splited);
+void	free_pars(t_pars *pars);
+
 #endif

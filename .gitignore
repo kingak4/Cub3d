@@ -2,3 +2,4 @@ mlx/
 # Pliki obiektowe
 *.o
 *.swp
+libft/ *.o
