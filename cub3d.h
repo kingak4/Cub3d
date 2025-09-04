@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 12:19:47 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:22:06 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef struct s_pars
 	char	**map;
 }	t_pars;
 
+// where is player
+typedef struct s_vector2
+{
+	int	x;
+	int	y;
+} t_vector2;
 // parsing and reading map file
 int		check_file(char *s); // is file correct
 char	*space(const char *s); // make on space
@@ -36,7 +42,7 @@ void	read_file(int fd, t_pars *data); // reading file
 void	parse_line(char *line, t_pars *data);
 void	p_f_and_c(char *line, t_pars *data);
 int		pars_color(char *line);
-void	init_pars(t_pars *data);
+void	init_pars(t_pars *data, t_vector2 *node);
 int		ft_strcmp(char *s1, char *s2, size_t n);
 char	**append_line(char **lines, char *new_line, int count);
 
@@ -55,5 +61,6 @@ int		all_headers_found(int *found); // finnal check for flags
 // clean code
 void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
+int	find_palyer(t_vector2 *node, t_pars *data);
 
 #endif

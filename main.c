@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:50:22 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 11:50:43 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:23:52 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,14 @@
 int main(int argc, char **argv)
 {
     t_pars data;
+	t_vector2 node;
     int fd;
     int i;
 
     if (argc != 2)
         return (write(1, "Usage: ./cub3d <map.cub>\n", 26), 1);
 
-    init_pars(&data);   // inicjalizacja struktury
+    init_pars(&data, &node);   // inicjalizacja struktury
 
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
@@ -139,7 +140,7 @@ int main(int argc, char **argv)
     read_file(fd, &data);  // mapa wczytywana do data.map
     close(fd);
 
-    // sprawdzenie danych w t_pars
+     //sprawdzenie danych w t_pars
     printf("North wall: %s\n", data.n_wall);
     printf("South wall: %s\n", data.s_wall);
     printf("East wall: %s\n", data.e_wall);
@@ -160,8 +161,12 @@ int main(int argc, char **argv)
             i++;
         }
     }
+	if (find_palyer(&node, &data))
+	{
+		printf("player x =  %d\n", node.x);
+		printf("player y =  %d\n", node.y);
+	}
 
-    // zwalnianie pamięci
     free(data.n_wall);
     free(data.s_wall);
     free(data.e_wall);
@@ -174,6 +179,5 @@ int main(int argc, char **argv)
             free(data.map[i++]);
         free(data.map);
     }
-
     return 0;
 }
