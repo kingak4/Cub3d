@@ -4,7 +4,7 @@ WE ./resources/textures/Tiles045_2K-JPG_Color.xpm
 EA ./resources/textures/Wood003_2K-JPG_Color.xpm
 
 
-F 220,100,0
+F -220 ,1,-0
 C 225,30,0
 
 111111111111

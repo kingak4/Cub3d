@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 10:21:42 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/04 11:09:10 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ int	pars_color(char *line)
 	b = 0;
 	token = ft_split(line, ',');
 	if (!token || !token[0] || !token[1] || !token[2])
+	{
+		if (token)
+			free_tab(token);
 		return (-1);
+	}
 	r = ft_atoi(token[0]);
 	g = ft_atoi(token[1]);
 	b = ft_atoi(token[2]);
