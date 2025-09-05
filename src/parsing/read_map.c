@@ -6,16 +6,16 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 09:01:28 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 10:20:31 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:30:26 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 void	free_pars(t_pars *pars)
 {
 	if (!pars)
-		return;
+		return ;
 	if (pars->n_wall)
 		free(pars->n_wall);
 	if (pars->s_wall)
@@ -31,7 +31,8 @@ void	clean_read(t_pars *data, int *count)
 	int	i;
 
 	i = 0;
-	if (!data->n_wall || !data->s_wall || !data->e_wall || !data->w_wall || data->floor == -1 || data->celling == -1)
+	if (!data->n_wall || !data->s_wall || !data->e_wall
+		|| !data->w_wall || data->floor == -1 || data->celling == -1)
 	{
 		write(2, "Error: missing texture or color\n", 33);
 		free_pars(data);
@@ -71,7 +72,7 @@ static void	process_map_line(char *line, t_pars *data, int *count)
 
 	line_no_nl = ft_strdup(line);
 	if (!line_no_nl)
-		return;
+		return ;
 	len = ft_strlen(line_no_nl);
 	if (len > 0 && line_no_nl[len - 1] == '\n')
 		line_no_nl[len - 1] = '\0';
@@ -80,14 +81,11 @@ static void	process_map_line(char *line, t_pars *data, int *count)
 	free(line_no_nl);
 }
 
-void	read_file(int fd, t_pars *data)
+void	read_file(int fd, t_pars *data, int count, size_t len)
 {
 	char	*line;
-	int		count;
 	int		found[6];
-	size_t	len;
 
-	count = 0;
 	ft_memset(found, 0, sizeof(found));
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -99,9 +97,10 @@ void	read_file(int fd, t_pars *data)
 		{
 			free(line);
 			line = get_next_line(fd);
-			continue;
+			continue ;
 		}
-		if (is_no(line) || is_so(line) || is_we(line) || is_ea(line) || is_floor(line) || is_ceiling(line))
+		if (is_no(line) || is_so(line) || is_we(line)
+			|| is_ea(line) || is_floor(line) || is_ceiling(line))
 			add_to_struct(line, found, data);
 		else
 			process_map_line(line, data, &count);

@@ -6,16 +6,16 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 11:48:14 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 12:38:16 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:03:42 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 int	check_f(char *path)
 {
-	int fd;
-	size_t len;
+	int		fd;
+	size_t	len;
 
 	if (!path)
 		return (0);

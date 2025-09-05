@@ -6,11 +6,11 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:30:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 11:48:35 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:03:46 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 int	is_ceiling(char *line)
 {
@@ -55,7 +55,7 @@ int	check_file(char *s)
 void	p_f_and_c(char *line, t_pars *data)
 {
 	char	*value;
-	
+
 	if (check_prefix(line, "F "))
 	{
 		value = line + 2;

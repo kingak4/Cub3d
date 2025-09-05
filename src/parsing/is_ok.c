@@ -1,13 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_check.c                                       :+:      :+:    :+:   */
+/*   is_ok.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 13:30:03 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 13:30:17 by kikwasni         ###   ########.fr       */
+/*   Created: 2025/09/02 12:29:00 by kikwasni          #+#    #+#             */
+/*   Updated: 2025/09/05 13:05:04 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
+
+int	is_no(char *line)
+{
+	return (check_prefix(line, "NO "));
+}
+
+int	is_so(char *line)
+{
+	return (check_prefix(line, "SO "));
+}
+
+int	is_we(char *line)
+{
+	return (check_prefix(line, "WE "));
+}
+
+int	is_ea(char *line)
+{
+	return (check_prefix(line, "EA "));
+}
+
+int	is_floor(char *line)
+{
+	return (check_prefix(line, "F "));
+}
