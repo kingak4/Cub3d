@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 static void	set_ray_props(t_ray *ray, t_data *data, int x)
 {

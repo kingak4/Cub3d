@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 static t_tex_params	calculate_texture_params(t_data *data, t_ray *ray)
 {

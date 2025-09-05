@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 void	ft_init_data(t_data *data, t_pars *map_data)
 {
