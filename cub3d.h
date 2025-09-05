@@ -11,11 +11,6 @@
 
 # define WIN_W 1000
 # define WIN_H 600
-//STRUCTRE DATA H & W!!!!
-//{
-# define MAP_SIZE_W 29
-# define MAP_SIZE_H 11
-//}
 # define TEX_SIZE 128
 # define ROT_SPEED 0.005
 # define MOVE_SPEED 0.008
@@ -40,7 +35,7 @@ typedef struct s_vector2
 {
 	int	x;
 	int	y;
-} t_vector2;
+}	t_vector2;
 
 typedef struct s_img
 {
@@ -102,29 +97,32 @@ typedef struct s_ray
 	int		tex_num;
 }	t_ray;
 
-// Functions
+// Raycasting
+int		main_raycaster(t_pars *map_data);
+void	raycast(t_data *data);
 
-int	main_raycaster(t_pars *map_data);
 //Init
 void	set_player_dir(t_data *data);
-
-void	put_pixel_to_img(t_data *data, int x, int y, int color);
+void	ft_init_data(t_data *data, t_pars *map_data);
 int		load_texture(t_data *data, t_img *tex_img, char *path);
 int		load_textures(t_data *data);
-void	draw_floor_ceiling(t_data *data, t_ray *ray, int x);
+
+//Hooks
 int		key_press(int keycode, t_data *data);
 int		key_release(int keycode, t_data *data);
 int		close_window(t_data *data);
 void	clean_exit(t_data *data);
-void	raycast(t_data *data);
-void	ft_init_data(t_data *data, t_pars *map_data);
+
 //Rotation and movement
 void	rotate_right(t_data *data);
 void	rotate_left(t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
-//Wall rendering
+
+//Rendering
 void	draw_wall_slice(t_data *data, t_ray *ray, int x);
+void	put_pixel_to_img(t_data *data, int x, int y, int color);
+void	draw_floor_ceiling(t_data *data, t_ray *ray, int x);
 
 // parsing and reading map file
 int		check_file(char *s); // is file correct

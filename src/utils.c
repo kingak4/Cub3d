@@ -3,8 +3,8 @@
 void	ft_init_data(t_data *data, t_pars *map_data)
 {
 	data->map_data = map_data;
-	data->pos_x = map_data->node->x;
-	data->pos_y = map_data->node->y;
+	data->pos_x = map_data->node->x + 0.5;
+	data->pos_y = map_data->node->y + 0.5;
 	set_player_dir(data);
 	data->is_rotating_left = 0;
 	data->is_rotating_right = 0;
@@ -56,13 +56,13 @@ void	draw_floor_ceiling(t_data *data, t_ray *ray, int x)
 	y = ray->draw_end;
 	while (y < WIN_H)
 	{
-		put_pixel_to_img(data, x, y, 0x4B371C);
+		put_pixel_to_img(data, x, y, data->map_data->floor);
 		y++;
 	}
 	y = 0;
 	while (y < ray->draw_start)
 	{
-		put_pixel_to_img(data, x, y, 0x40c9b9);
+		put_pixel_to_img(data, x, y, data->map_data->celling);
 		y++;
 	}
 }

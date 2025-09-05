@@ -34,8 +34,8 @@ static void	on_dda_hit(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x >= 0 && ray->map_x < MAP_SIZE_W
-			&& ray->map_y >= 0 && ray->map_y < MAP_SIZE_H)
+		if (ray->map_x >= 0 && ray->map_x < data->map_data->w
+			&& ray->map_y >= 0 && ray->map_y < data->map_data->h)
 		{
 			if (data->world_map[ray->map_y][ray->map_x] == '1')
 				ray->hit = 1;

@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 	}
 	// sprawdzenie mapy
 
+	data.node = &node;
 	//wywołanie głównej funkcji od raycastów
 	main_raycaster(&data);
 
