@@ -13,7 +13,7 @@ int	find_palyer(t_vector2 *node, t_pars *data, int x, int y)
 				if (data->player_dir_char != 0)
 				{
 					printf("there is 2 or more player on teh map\n");
-					return (0);
+					return (2);
 				}
 				node->x = x;
 				node->y = y;
