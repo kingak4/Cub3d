@@ -6,6 +6,9 @@ int	render(t_data *data)
 	rotate_left(data);
 	move_forward(data);
 	move_backward(data);
+	move_left(data);
+	move_right(data);
+	
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	data->img.img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr,

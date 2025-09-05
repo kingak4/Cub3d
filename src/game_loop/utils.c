@@ -10,6 +10,8 @@ void	ft_init_data(t_data *data, t_pars *map_data)
 	data->is_rotating_right = 0;
 	data->is_moving_forward = 0;
 	data->is_moving_backward = 0;
+	data->is_moving_right = 0;
+	data->is_moving_left = 0;
 }
 
 void	put_pixel_to_img(t_data *data, int x, int y, int color)

@@ -65,3 +65,35 @@ void	move_backward(t_data *data)
 			data->pos_x -= data->dir_x * MOVE_SPEED;
 	}
 }
+
+void	move_right(t_data *data)
+{
+	if (data->is_moving_right)
+	{
+		// Move along the camera plane vector
+		// Check for collision in the X direction first
+		if (data->world_map[(int)(data->pos_y)]
+			[(int)(data->pos_x + data->plane_x * MOVE_SPEED)] == '0')
+			data->pos_x += data->plane_x * MOVE_SPEED;
+		// Check for collision in the Y direction
+		if (data->world_map[(int)(data->pos_y + data->plane_y
+				* MOVE_SPEED)][(int)(data->pos_x)] == '0')
+			data->pos_y += data->plane_y * MOVE_SPEED;
+	}
+}
+
+void	move_left(t_data *data)
+{
+	if (data->is_moving_left)
+	{
+		// Move along the negative of the camera plane vector
+		// Check for collision in the X direction first
+		if (data->world_map[(int)(data->pos_y)]
+			[(int)(data->pos_x - data->plane_x * MOVE_SPEED)] == '0')
+			data->pos_x -= data->plane_x * MOVE_SPEED;
+		// Check for collision in the Y direction
+		if (data->world_map[(int)(data->pos_y - data->plane_y
+				* MOVE_SPEED)][(int)(data->pos_x)] == '0')
+			data->pos_y -= data->plane_y * MOVE_SPEED;
+	}
+}

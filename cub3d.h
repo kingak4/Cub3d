@@ -64,6 +64,8 @@ typedef struct s_data
 	int		is_rotating_right;
 	int		is_moving_forward;
 	int		is_moving_backward;
+	int		is_moving_right;
+	int		is_moving_left;
 	t_img	textures[4];
 	t_pars	*map_data;
 }	t_data;
@@ -118,6 +120,8 @@ void	rotate_right(t_data *data);
 void	rotate_left(t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
+void	move_right(t_data *data);
+void	move_left(t_data *data);
 
 //Rendering
 void	draw_wall_slice(t_data *data, t_ray *ray, int x);
