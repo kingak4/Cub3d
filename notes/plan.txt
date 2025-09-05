@@ -1,2 +1,1 @@
-1. norma 
-3. fianl check and parsing fucnkej przygotowana pod main ze jak jest zle to free  koniec 
+1. fianl check and parsing fucnkej przygotowana pod main ze jak jest zle to free  koniec 
