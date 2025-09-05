@@ -41,9 +41,7 @@ static void	on_dda_hit(t_ray *ray, t_data *data)
 				ray->hit = 1;
 		}
 		else
-		{
 			ray->hit = 1;
-		}
 	}
 }
 

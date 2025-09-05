@@ -31,15 +31,9 @@ void	clean_exit(t_data *data)
 		i++;
 	}
 	if (data->map_data)
-	{
 		free_pars(data->map_data);
-		data->map_data = NULL;
-	}
 	if (data->world_map)
-	{
 		free_tab(data->world_map);
-		data->world_map = NULL;
-	}
 	if (data->win_ptr)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	if (data->mlx_ptr)
@@ -61,7 +55,7 @@ int	main_raycaster(t_pars *map_data)
 	t_data	data;
 
 	ft_init_data(&data, map_data);
-	ft_init_map(&data);
+	data.world_map = data.map_data->map;
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (1);

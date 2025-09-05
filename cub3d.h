@@ -103,6 +103,8 @@ typedef struct s_ray
 // Functions
 
 int	main_raycaster(t_pars *map_data);
+//Init
+void	set_player_dir(t_data *data);
 
 void	put_pixel_to_img(t_data *data, int x, int y, int color);
 int		load_texture(t_data *data, t_img *tex_img, char *path);
@@ -114,7 +116,6 @@ int		close_window(t_data *data);
 void	clean_exit(t_data *data);
 void	raycast(t_data *data);
 void	ft_init_data(t_data *data, t_pars *map_data);
-void	ft_init_map(t_data *data);
 //Rotation and movement
 void	rotate_right(t_data *data);
 void	rotate_left(t_data *data);
