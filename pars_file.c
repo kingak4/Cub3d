@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 11:09:10 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:11:11 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_pars(t_pars *data, t_vector2 *node)
 	data->floor = -1;
 	data->celling = -1;
 	data->map = NULL;
+	data->player_dir_char = 0;
 	node->x = 0;
 	node->y = 0;
 }

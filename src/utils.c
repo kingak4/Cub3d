@@ -3,9 +3,8 @@
 void	ft_init_data(t_data *data, t_pars *map_data)
 {
 	data->map_data = map_data;
-	data->pos_x = map_data->player_pos->x;
-	data->pos_y = map_data->player_pos->y;
-	data->map_data->player_dir_char = 'S'; //NEED TO GET VALUE FROM PARSING!!
+	data->pos_x = map_data->node->x;
+	data->pos_y = map_data->node->y;
 	set_player_dir(data);
 	data->is_rotating_left = 0;
 	data->is_rotating_right = 0;

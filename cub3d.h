@@ -20,25 +20,27 @@
 # define ROT_SPEED 0.005
 # define MOVE_SPEED 0.008
 
+typedef struct s_pars
+{
+	char				*n_wall;
+	char				*s_wall;
+	char				*e_wall;
+	char				*w_wall;
+	int					floor;
+	int					celling;
+	char				**map;
+	int					w;
+	int					h;
+	struct s_vector2	*node;
+	char				player_dir_char;
+}	t_pars;
+
 // where is player
 typedef struct s_vector2
 {
 	int	x;
 	int	y;
 } t_vector2;
-
-typedef struct s_pars
-{
-	char		*n_wall;
-	char		*s_wall;
-	char		*e_wall;
-	char		*w_wall;
-	int			floor;
-	int			celling;
-	char		**map;
-	t_vector2	*player_pos;
-	char		player_dir_char;
-}	t_pars;
 
 typedef struct s_img
 {
@@ -151,6 +153,15 @@ int		all_headers_found(int *found); // finnal check for flags
 // clean code
 void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
-int	find_palyer(t_vector2 *node, t_pars *data);
+// palyer && map checking 
+int		find_palyer(t_vector2 *node, t_pars *data);
+int		is_player(t_vector2 *node, t_pars *data);
+int		map_check(t_pars *data);
+int		is_map_ok(t_pars *data);
+void	get_map_size(t_pars *data);
+
+// checking texture 
+int		check_f(char *path);
+int		check_textures(t_pars *data);
 
 #endif
