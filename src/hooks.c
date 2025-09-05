@@ -5,13 +5,13 @@ int	key_press(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 		clean_exit(data);
-	if (keycode == 65361)
+	if (keycode == 65361 || keycode == 97)
 		data->is_rotating_left = 1;
-	if (keycode == 65363)
+	if (keycode == 65363 || keycode == 100)
 		data->is_rotating_right = 1;
-	if (keycode == 65362)
+	if (keycode == 65362 || keycode == 119)
 		data->is_moving_forward = 1;
-	if (keycode == 65364)
+	if (keycode == 65364 || keycode == 115)
 		data->is_moving_backward = 1;
 	return (0);
 }
@@ -20,13 +20,13 @@ int	key_release(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 		clean_exit(data);
-	if (keycode == 65361)
+	if (keycode == 65361 || keycode == 97)
 		data->is_rotating_left = 0;
-	if (keycode == 65363)
+	if (keycode == 65363 || keycode == 100)
 		data->is_rotating_right = 0;
-	if (keycode == 65362)
+	if (keycode == 65362 || keycode == 119)
 		data->is_moving_forward = 0;
-	if (keycode == 65364)
+	if (keycode == 65364 || keycode == 115)
 		data->is_moving_backward = 0;
 	return (0);
 }

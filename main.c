@@ -48,13 +48,11 @@ int main(int argc, char **argv)
 	else
 		printf("brak gracza\n");
 
-<<<<<<< HEAD
+	data.player_pos = &node;
 	//wywołanie głównej funkcji od raycastów
 	main_raycaster(&data);
 
     // zwalnianie pamięci
-=======
->>>>>>> origin/kinga_branch
     free(data.n_wall);
     free(data.s_wall);
     free(data.e_wall);
@@ -67,10 +65,5 @@ int main(int argc, char **argv)
             free(data.map[i++]);
         free(data.map);
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/kinga_branch
     return 0;
 }

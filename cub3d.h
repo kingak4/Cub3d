@@ -20,23 +20,25 @@
 # define ROT_SPEED 0.005
 # define MOVE_SPEED 0.008
 
-typedef struct s_pars
-{
-	char	*n_wall;
-	char	*s_wall;
-	char	*e_wall;
-	char	*w_wall;
-	int		floor;
-	int		celling;
-	char	**map;
-}	t_pars;
-
 // where is player
 typedef struct s_vector2
 {
 	int	x;
 	int	y;
 } t_vector2;
+
+typedef struct s_pars
+{
+	char		*n_wall;
+	char		*s_wall;
+	char		*e_wall;
+	char		*w_wall;
+	int			floor;
+	int			celling;
+	char		**map;
+	t_vector2	*player_pos;
+	char		player_dir_char;
+}	t_pars;
 
 typedef struct s_img
 {

@@ -1,14 +1,48 @@
 #include "../cub3d.h"
 
+void	set_player_dir(t_data *data)
+{
+	char	c;
+
+	c = data->map_data->player_dir_char;
+	if (c == 'N')
+	{
+		data->dir_x = 0.0;
+		data->dir_y = -1.0;
+		data->plane_x = 0.85;
+		data->plane_y = 0;
+	}
+	else if (c == 'S')
+	{
+		data->dir_x = 0.0;
+		data->dir_y = 1.0;
+		data->plane_x = -0.85;
+		data->plane_y = 0;
+	}
+	else if (c == 'E')
+	{
+		data->dir_x = 1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0;
+		data->plane_y = 0.85;
+	}
+	else if (c == 'W')
+	{
+		data->dir_x = -1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0;
+		data->plane_y = -0.85;
+	}
+}
+
 void	ft_init_data(t_data *data, t_pars *map_data)
 {
 	data->map_data = map_data;
-	data->pos_x = 15.0;
-	data->pos_y = 4.0;
-	data->dir_x = 1.0;
-	data->dir_y = 0.0;
-	data->plane_x = 0.0;
-	data->plane_y = 0.85;
+	data->pos_x = map_data->player_pos->x;
+	data->pos_y = map_data->player_pos->y;
+
+	data->map_data->player_dir_char = 'S'; //NEED TO GET VALUE FROM PARSING!!
+	set_player_dir(data);
 	data->is_rotating_left = 0;
 	data->is_rotating_right = 0;
 	data->is_moving_forward = 0;
