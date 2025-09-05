@@ -4,7 +4,7 @@ NAME = cub3d
 RM = rm -rf
 AR = ar rcs
 
-FILES = src/game_loop/main.c src/game_loop/hooks.c src/game_loop/raycasts.c src/game_loop/utils.c src/game_loop/rotate_and_move.c src/game_loop/wall_renderer.c src/game_loop/set_player_dir.c src/parsing/main.c src/parsing/file_check.c src/parsing/make_one_s.c src/parsing/pars_file.c src/parsing/is_ok.c src/parsing/checkers_p2.c src/parsing/read_map.c src/parsing/is_player.c src/parsing/check_texture.c
+FILES = src/game_loop/main.c src/game_loop/hooks.c src/game_loop/raycasts.c src/game_loop/utils.c src/game_loop/rotate_and_move.c src/game_loop/wall_renderer.c src/game_loop/set_player_dir.c src/parsing/main.c src/parsing/file_check.c src/parsing/make_one_s.c src/parsing/pars_file.c src/parsing/is_ok.c src/parsing/checkers_p2.c src/parsing/read_map.c src/parsing/is_player.c src/parsing/check_texture.c src/parsing/wall_check.c src/parsing/w2.c src/parsing/final.c
 OBJS = $(FILES:.c=.o) 
 
 LIBFT_PATH = libft

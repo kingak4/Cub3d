@@ -132,7 +132,7 @@ void	draw_floor_ceiling(t_data *data, t_ray *ray, int x);
 int		check_file(char *s); // is file correct
 char	*space(const char *s); // make on space
 int		check_prefix(char *line, char *prefix);
-void	read_file(int fd, t_pars *data); // reading file
+void	read_file(int fd, t_pars *data, int count, size_t len);
 void	parse_line(char *line, t_pars *data);
 void	p_f_and_c(char *line, t_pars *data);
 int		pars_color(char *line);
@@ -155,8 +155,9 @@ int		all_headers_found(int *found); // finnal check for flags
 // clean code
 void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
+void	clean_map(t_pars *data);
 // palyer && map checking 
-int		find_palyer(t_vector2 *node, t_pars *data);
+int	find_palyer(t_vector2 *node, t_pars *data, int x, int y);
 int		is_player(t_vector2 *node, t_pars *data);
 int		map_check(t_pars *data);
 int		is_map_ok(t_pars *data);
@@ -165,5 +166,13 @@ void	get_map_size(t_pars *data);
 // checking texture 
 int		check_f(char *path);
 int		check_textures(t_pars *data);
+
+// cheking edges of teh map 
+int	first(t_pars *data);
+int	last(t_pars *data);
+int	check_holes(t_pars *data);
+int	is_map(t_pars *data);
+
+int	final(t_pars *data, t_vector2 *node);
 
 #endif

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   checkers_p2.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 12:30:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../cub3d.h"
 
 int	is_ceiling(char *line)
@@ -55,7 +43,7 @@ int	check_file(char *s)
 void	p_f_and_c(char *line, t_pars *data)
 {
 	char	*value;
-	
+
 	if (check_prefix(line, "F "))
 	{
 		value = line + 2;

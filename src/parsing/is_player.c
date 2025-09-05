@@ -1,32 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   is_player.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 16:47:15 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../cub3d.h"
-#include <stdio.h>
 
-int	find_palyer(t_vector2 *node, t_pars *data)
+int	find_palyer(t_vector2 *node, t_pars *data, int x, int y)
 {
-	int	x;
-	int	y;
-
-	y = 0;
 	while (data->map[y])
 	{
 		x = 0;
 		while (data->map[y][x])
 		{
 			if (data->map[y][x] == 'N' || data->map[y][x] == 'E'
-				|| data->map[y][x] == 'S'|| data->map[y][x] == 'W')
+				|| data->map[y][x] == 'S' || data->map[y][x] == 'W')
 			{
+				if (data->player_dir_char != 0)
+				{
+					printf("there is 2 or more player on teh map\n");
+					return (0);
+				}
 				node->x = x;
 				node->y = y;
 				data->player_dir_char = data->map[y][x];
@@ -43,7 +31,7 @@ int	find_palyer(t_vector2 *node, t_pars *data)
 
 int	is_player(t_vector2 *node, t_pars *data)
 {
-	if (find_palyer(node, data) == 0)
+	if (find_palyer(node, data, 0 , 0) == 0)
 	{
 		write(2, "Error: no player on the map\n", 28);
 		return (0);
@@ -68,7 +56,7 @@ int	map_check(t_pars *data)
 				|| data->map[y][x] == 'E' || data->map[y][x] == 'W')
 			{
 				x++;
-				continue;
+				continue ;
 			}
 			else
 				return (0);
@@ -87,6 +75,7 @@ int	is_map_ok(t_pars *data)
 	}
 	return (1);
 }
+
 void	get_map_size(t_pars *data)
 {
 	int	y;
@@ -102,7 +91,7 @@ void	get_map_size(t_pars *data)
 		x_end = 0;
 		while (data->map[y][x_end] != '\0')
 			x_end++;
-		x_end--; 
+		x_end--;
 		while (x_end >= x_start && data->map[y][x_end] == ' ')
 			x_end--;
 		line_width = x_end - x_start + 1;
