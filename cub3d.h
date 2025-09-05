@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:34:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 12:55:41 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 10:56:08 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 
 typedef struct s_pars
 {
-	char	*n_wall;
-	char	*s_wall;
-	char	*e_wall;
-	char	*w_wall;
-	int		floor;
-	int		celling;
-	char	**map;
-	int		w;
-	int		h;
+	char				*n_wall;
+	char				*s_wall;
+	char				*e_wall;
+	char				*w_wall;
+	int					floor;
+	int					celling;
+	char				**map;
+	int					w;
+	int					h;
+	struct s_vector2	*node;
+	char				player_dir_char;
 }	t_pars;
 
 // where is player
@@ -36,6 +38,7 @@ typedef struct s_vector2
 	int	x;
 	int	y;
 } t_vector2;
+
 // parsing and reading map file
 int		check_file(char *s); // is file correct
 char	*space(const char *s); // make on space
@@ -68,6 +71,7 @@ int		find_palyer(t_vector2 *node, t_pars *data);
 int		is_player(t_vector2 *node, t_pars *data);
 int		map_check(t_pars *data);
 int		is_map_ok(t_pars *data);
+void	get_map_size(t_pars *data);
 
 // checking texture 
 int		check_f(char *path);

@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:50:22 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 12:55:55 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:12:03 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,11 @@ int main(int argc, char **argv)
 			printf("player x =  %d\n", node.x);
 			printf("player y =  %d\n", node.y);
 		}
-		else
-			printf("brak gracza\n");
+		get_map_size(&data);
+		printf("w =  %d\n", data.w);
+			printf("h = %d\n", data.h);
+		printf("player dir: %c\n", data.player_dir_char);
+		
 	}
 	// sprawdzenie mapy
 

@@ -1,6 +1,2 @@
-1. Walidacja innych znakow na mapie 
-3. dodja liczenie mapy szeroekosz i wysokosc najbardzij najdlusze punkty najabrdzij wysuniete licz to do ostaniteienj 1 
-3. norma 
-
-----------
-4. sparwdz boki mapy .
+1. norma 
+2. sparwdz boki mapy .
