@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:33:45 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/05 11:11:11 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 void	init_pars(t_pars *data, t_vector2 *node)
 {

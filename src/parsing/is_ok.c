@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_ok.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:29:00 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/02 12:54:12 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 int	is_no(char *line)
 {

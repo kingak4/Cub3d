@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checkers_p2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:30:34 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/04 11:48:35 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 int	is_ceiling(char *line)
 {

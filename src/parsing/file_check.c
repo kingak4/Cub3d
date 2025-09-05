@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:14:29 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 12:19:17 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 int	ft_strcmp(char *s1, char *s2, size_t n)
 {

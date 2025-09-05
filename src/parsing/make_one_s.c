@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_one_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:01:43 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/03 10:01:56 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 static int	is_space(char c)
 {

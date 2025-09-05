@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 16:47:15 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/05 12:18:35 by korzecho         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:53:53 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 #include <stdio.h>
 
 int	find_palyer(t_vector2 *node, t_pars *data)
