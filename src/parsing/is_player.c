@@ -30,7 +30,7 @@ int	find_palyer(t_vector2 *node, t_pars *data, int x, int y)
 
 int	is_player(t_vector2 *node, t_pars *data)
 {
-	if (find_palyer(node, data, 0 , 0) == 0)
+	if (find_palyer(node, data, 0, 0) == 0)
 	{
 		write(2, "Error: no player on the map\n", 28);
 		return (0);

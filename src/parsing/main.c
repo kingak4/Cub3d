@@ -1,11 +1,11 @@
 #include "../../cub3d.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_pars data;
-	t_vector2 node;
-	int fd;
-	char *map;
+	t_pars		data;
+	t_vector2	node;
+	int			fd;
+	char		*map;
 
 	if (argc != 2)
 		return (write(1, "Too few args\n", 13), 1);
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (write(1, "Error: cannot open file\n", 24), 1);
-	read_file(fd, &data,0 ,0);
+	read_file(fd, &data, 0, 0);
 	close(fd);
 	if (!final(&data, &node))
 		return (1);
