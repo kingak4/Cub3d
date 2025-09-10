@@ -14,10 +14,8 @@
 
 int	first(t_pars *data)
 {
-	int	y;
 	int	x;
 
-	y = 0;
 	x = 0;
 	if (!data->map)
 		return (0);

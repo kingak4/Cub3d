@@ -27,9 +27,6 @@ void	clean_map(t_pars *data)
 
 int	final(t_pars *data, t_vector2 *node)
 {
-	int	i;
-
-	i = 0;
 	if (check_textures(data) && is_player(node, data)
 		&& is_map_ok(data))
 	{
