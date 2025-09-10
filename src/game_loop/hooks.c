@@ -9,9 +9,9 @@ int	key_press(int keycode, t_data *data)
 		data->is_rotating_left = 1;
 	if (keycode == 65363)
 		data->is_rotating_right = 1;
-	if (keycode == 65362 || keycode == 119)
+	if (keycode == 119)
 		data->is_moving_forward = 1;
-	if (keycode == 65364 || keycode == 115)
+	if (keycode == 115)
 		data->is_moving_backward = 1;
 	if (keycode == 97)
 		data->is_moving_left = 1;
@@ -28,9 +28,9 @@ int	key_release(int keycode, t_data *data)
 		data->is_rotating_left = 0;
 	if (keycode == 65363)
 		data->is_rotating_right = 0;
-	if (keycode == 65362 || keycode == 119)
+	if (keycode == 119)
 		data->is_moving_forward = 0;
-	if (keycode == 65364 || keycode == 115)
+	if (keycode == 115)
 		data->is_moving_backward = 0;
 	if (keycode == 97)
 		data->is_moving_left = 0;
