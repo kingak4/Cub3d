@@ -100,7 +100,6 @@ typedef struct s_tex_params
 	int		tex_x;
 }	t_tex_params;
 
-
 // Raycasting
 int		main_raycaster(t_pars *map_data);
 void	raycast(t_data *data);
@@ -160,7 +159,7 @@ void	free_tab(char **splited);
 void	free_pars(t_pars *pars);
 void	clean_map(t_pars *data);
 // palyer && map checking 
-int	find_palyer(t_vector2 *node, t_pars *data, int x, int y);
+int		find_palyer(t_vector2 *node, t_pars *data, int x, int y);
 int		is_player(t_vector2 *node, t_pars *data);
 int		map_check(t_pars *data);
 int		is_map_ok(t_pars *data);
@@ -171,11 +170,11 @@ int		check_f(char *path);
 int		check_textures(t_pars *data);
 
 // cheking edges of teh map 
-int	first(t_pars *data);
-int	last(t_pars *data);
-int	check_holes(t_pars *data);
-int	is_map(t_pars *data);
+int		first(t_pars *data);
+int		last(t_pars *data);
+int		check_holes(t_pars *data);
+int		is_map(t_pars *data);
 
-int	final(t_pars *data, t_vector2 *node);
+int		final(t_pars *data, t_vector2 *node);
 
 #endif
