@@ -25,7 +25,6 @@ int	find_palyer(t_vector2 *node, t_pars *data, int x, int y)
 		}
 		y++;
 	}
-	printf("player x: %d, y: %d\n", node->x, node->y);
 	return (0);
 }
 

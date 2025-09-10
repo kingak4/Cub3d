@@ -28,9 +28,7 @@ int	final(t_pars *data, t_vector2 *node)
 			return (0);
 		}
 		get_map_size(data);
-		if (is_map(data))
-			printf( "map ok\n");
-		else
+		if (!is_map(data))
 		{
 			free_pars(data);
 			clean_map(data);
