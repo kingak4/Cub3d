@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="cub3de.png">
+</p>
+
 # This is 42 Warsaw project called "cub3D".
 
 This project is about building a realistic 3D graphical representation of the inside of a maze from a first-person perspective using ray-casting principles. As a student I need to follow rules such as: limited usage of external libraries, all the code needs to follow the 42 norm.
