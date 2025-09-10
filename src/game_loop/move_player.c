@@ -2,7 +2,7 @@
 
 void	move_forward(t_data *data)
 {
-	if (data->is_moving_forward)
+	if (data->is_moving_forward && !data->cant_move_forward)
 	{
 		if (data->world_map[(int)(data->pos_y + data->dir_y
 				* MOVE_SPEED)][(int)(data->pos_x)] == '0')

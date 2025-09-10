@@ -99,10 +99,7 @@ void	raycast(t_data *data)
 		set_ray_props(&ray, data, x);
 		ray.hit = 0;
 		dda_algo(&ray, data);
-		if (ray.side == 0)
-			ray.perp_wall_dist = (ray.side_dist_x - ray.delta_dist_x);
-		else
-			ray.perp_wall_dist = (ray.side_dist_y - ray.delta_dist_y);
+		perp_wall_dis(&ray, data);
 		ray.line_height = (int)(WIN_H / ray.perp_wall_dist);
 		ray.draw_start = -ray.line_height / 2 + WIN_H / 2;
 		if (ray.draw_start < 0)

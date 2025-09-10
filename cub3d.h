@@ -48,35 +48,6 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	char	**world_map;
-	int		is_rotating_left;
-	int		is_rotating_right;
-	int		is_moving_forward;
-	int		is_moving_backward;
-	int		is_moving_right;
-	int		is_moving_left;
-	t_img	textures[4];
-	t_pars	*map_data;
-}	t_data;
-
-typedef struct s_tex_params
-{
-	double	tex_step;
-	double	tex_pos;
-	int		tex_x;
-}	t_tex_params;
-
 typedef struct s_ray
 {
 	double	camera_x;
@@ -98,6 +69,37 @@ typedef struct s_ray
 	int		draw_end;
 	int		tex_num;
 }	t_ray;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	char	**world_map;
+	int		is_rotating_left;
+	int		is_rotating_right;
+	int		is_moving_forward;
+	int		is_moving_backward;
+	int		is_moving_right;
+	int		is_moving_left;
+	int		cant_move_forward;
+	t_img	textures[4];
+	t_pars	*map_data;
+}	t_data;
+
+typedef struct s_tex_params
+{
+	double	tex_step;
+	double	tex_pos;
+	int		tex_x;
+}	t_tex_params;
+
 
 // Raycasting
 int		main_raycaster(t_pars *map_data);
@@ -127,6 +129,7 @@ void	move_left(t_data *data);
 void	draw_wall_slice(t_data *data, t_ray *ray, int x);
 void	put_pixel_to_img(t_data *data, int x, int y, int color);
 void	draw_floor_ceiling(t_data *data, t_ray *ray, int x);
+void	perp_wall_dis(t_ray *ray, t_data *data);
 
 // parsing and reading map file
 int		check_file(char *s); // is file correct
