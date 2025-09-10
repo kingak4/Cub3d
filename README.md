@@ -1,4 +1,4 @@
-# Hello, this is my take on 42 Warsaw project called "cub3D".
+# This is 42 Warsaw project called "cub3D".
 
 This project is about building a realistic 3D graphical representation of the inside of a maze from a first-person perspective using ray-casting principles. As a student I need to follow rules such as: limited usage of external libraries, all the code needs to follow the 42 norm.
 
@@ -6,16 +6,14 @@ The game is inspired by the world-famous Wolfenstein 3D game, which is considere
 
 **1. To run the game clone this repo first:**
 ```bash
-git clone [your-repository-url]
+git clone git@github.com:kingak4/Cub3d.git
 cd Cub3d
 ```
 
 **2. Now we need to get minilibx library, in bash use command:**
 ```bash
-bash import_libX.sh
+git clone https://github.com/42paris/minilibx-linux.git mlx
 ```
-> [!NOTE]
-> This bash command will clone and build this repository.
 
 **3. Build the game with command:**
 ```bash
@@ -119,6 +117,8 @@ C 225,30,0
 - **Graphics Library:** MiniLibX
 - **Compilation Flags:** -Wall -Wextra -Werror
 - **External Functions:** open, close, read, write, printf, malloc, free, perror, strerror, exit, gettimeofday, math library functions, MiniLibX functions
+
+## AUTHORS: kikwasni & korzecho
 
 ---
 
