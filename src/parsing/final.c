@@ -6,7 +6,7 @@
 /*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:29:42 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/17 09:25:30 by korzecho         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:54:44 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void	clean_map(t_pars *data)
 			free(data->map[i++]);
 		free(data->map);
 	}
+}
+
+void	clear_func(t_pars *data)
+{
+	free_pars(data);
+	clean_map(data);
 }
 
 int	final(t_pars *data, t_vector2 *node)
@@ -43,6 +49,11 @@ int	final(t_pars *data, t_vector2 *node)
 			clean_map(data);
 			return (0);
 		}
+	}
+	else
+	{
+		clear_func(data);
+		return (0);
 	}
 	return (1);
 }

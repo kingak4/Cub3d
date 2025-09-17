@@ -6,7 +6,7 @@
 /*   By: korzecho <korzecho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:30:00 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/17 09:25:22 by korzecho         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:35:44 by korzecho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		return (write(1, "Error: cannot open file\n", 24), 1);
 	read_file(fd, &data, 0, 0);
 	close(fd);
-	if (final(&data, &node) == 1)
+	if (!final(&data, &node))
 		return (1);
 	data.node = &node;
 	main_raycaster(&data);
