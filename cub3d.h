@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:30:38 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/10 12:30:39 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:50:19 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,9 @@ int		pars_color(char *line);
 void	init_pars(t_pars *data, t_vector2 *node);
 int		ft_strcmp(char *s1, char *s2, size_t n);
 char	**append_line(char **lines, char *new_line, int count);
+int		is_map_part(char *line, t_pars *data, int *found, int *count);
+void	process_map_line(char *line, t_pars *data, int *count);
+void	add_to_struct(char *line, int *found, t_pars *data);
 
 //small checker for walls 
 int		is_no(char *line);

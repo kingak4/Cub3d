@@ -6,7 +6,7 @@
 /*   By: kikwasni <kikwasni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:30:12 by kikwasni          #+#    #+#             */
-/*   Updated: 2025/09/10 12:30:13 by kikwasni         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:52:02 by kikwasni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	add_to_struct(char *line, int *found, t_pars *data)
 	free(trimmed);
 }
 
-static void	process_map_line(char *line, t_pars *data, int *count)
+void	process_map_line(char *line, t_pars *data, int *count)
 {
 	char	*line_no_nl;
 	size_t	len;
@@ -85,13 +85,17 @@ void	read_file(int fd, t_pars *data, int count, size_t len)
 {
 	char	*line;
 	int		found[6];
+	int		map;
 
+	map = 0;
 	ft_memset(found, 0, sizeof(found));
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		len = ft_strlen(line);
-		if (len > 0 && line[len - 1] == '\n')
+		if (line[0] == '\n' && map == 1)
+			;
+		else if (len > 0 && line[len - 1] == '\n')
 			line[len - 1] = '\0';
 		if (*line == '\0')
 		{
@@ -99,11 +103,7 @@ void	read_file(int fd, t_pars *data, int count, size_t len)
 			line = get_next_line(fd);
 			continue ;
 		}
-		if (is_no(line) || is_so(line) || is_we(line)
-			|| is_ea(line) || is_floor(line) || is_ceiling(line))
-			add_to_struct(line, found, data);
-		else
-			process_map_line(line, data, &count);
+		map = is_map_part(line, data, found, &count);
 		free(line);
 		line = get_next_line(fd);
 	}
